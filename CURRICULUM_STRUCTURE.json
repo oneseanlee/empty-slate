@@ -1,0 +1,189 @@
+{
+  "platform": {
+    "name": "ScorePro DIY Credit Repair",
+    "total_courses": 87,
+    "total_categories": 12,
+    "total_duration_minutes": 2450,
+    "total_duration_hours": 40.8
+  },
+  "categories": [
+    {
+      "id": 1,
+      "name": "Getting Started",
+      "slug": "getting-started",
+      "description": "Introduction to credit repair fundamentals and the ScorePro platform",
+      "course_count": 8,
+      "total_duration": 205,
+      "difficulty": "Beginner",
+      "is_free": true,
+      "display_order": 1
+    },
+    {
+      "id": 2,
+      "name": "Credit Fundamentals", 
+      "slug": "credit-fundamentals",
+      "description": "Understanding how credit works, scoring models, and key factors",
+      "course_count": 8,
+      "total_duration": 255,
+      "difficulty": "Intermediate",
+      "is_free": false,
+      "display_order": 2
+    },
+    {
+      "id": 3,
+      "name": "Legal Rights",
+      "slug": "legal-rights", 
+      "description": "Know your consumer rights under FCRA, FDCPA, and other regulations",
+      "course_count": 8,
+      "total_duration": 255,
+      "difficulty": "Intermediate-Advanced",
+      "is_free": false,
+      "display_order": 3
+    },
+    {
+      "id": 4,
+      "name": "Reading Credit Reports",
+      "slug": "reading-credit-reports",
+      "description": "Master credit report analysis and identify errors effectively", 
+      "course_count": 7,
+      "total_duration": 210,
+      "difficulty": "Beginner-Intermediate",
+      "is_free": false,
+      "display_order": 4
+    },
+    {
+      "id": 5,
+      "name": "The Dispute Process",
+      "slug": "dispute-process",
+      "description": "Strategic dispute filing and bureau communication techniques",
+      "course_count": 8, 
+      "total_duration": 275,
+      "difficulty": "Intermediate",
+      "is_free": false,
+      "display_order": 5
+    },
+    {
+      "id": 6,
+      "name": "Advanced Dispute Strategies",
+      "slug": "advanced-strategies",
+      "description": "Expert-level dispute tactics and legal escalation methods",
+      "course_count": 8,
+      "total_duration": 320,
+      "difficulty": "Advanced", 
+      "is_free": false,
+      "display_order": 6
+    },
+    {
+      "id": 7,
+      "name": "Credit Building & Optimization",
+      "slug": "credit-building",
+      "description": "Build positive credit history and optimize your credit profile",
+      "course_count": 7,
+      "total_duration": 225,
+      "difficulty": "Intermediate",
+      "is_free": false,
+      "display_order": 7
+    },
+    {
+      "id": 8,
+      "name": "Dealing with Specific Credit Issues",
+      "slug": "specific-issues",
+      "description": "Handle late payments, collections, charge-offs, and more",
+      "course_count": 7,
+      "total_duration": 275,
+      "difficulty": "Intermediate-Advanced",
+      "is_free": false,
+      "display_order": 8
+    },
+    {
+      "id": 9,
+      "name": "Financial Management for Credit Health",
+      "slug": "financial-management",
+      "description": "Budgeting, debt strategies, and financial planning for credit success",
+      "course_count": 8,
+      "total_duration": 235,
+      "difficulty": "Beginner-Intermediate", 
+      "is_free": false,
+      "display_order": 9
+    },
+    {
+      "id": 10,
+      "name": "ScorePro Platform Features",
+      "slug": "scorepro-platform",
+      "description": "Maximize the ScorePro platform tools and automation features",
+      "course_count": 7,
+      "total_duration": 175,
+      "difficulty": "Beginner-Intermediate",
+      "is_free": false,
+      "display_order": 10
+    },
+    {
+      "id": 11,
+      "name": "Avoiding Scams",
+      "slug": "avoiding-scams",
+      "description": "Identify and protect yourself from credit repair scams and fraud",
+      "course_count": 7,
+      "total_duration": 175,
+      "difficulty": "Beginner",
+      "is_free": false,
+      "display_order": 11
+    },
+    {
+      "id": 12,
+      "name": "Long-term Maintenance", 
+      "slug": "long-term-maintenance",
+      "description": "Maintain excellent credit for life through ongoing best practices",
+      "course_count": 7,
+      "total_duration": 175,
+      "difficulty": "Beginner-Intermediate",
+      "is_free": false,
+      "display_order": 12
+    }
+  ],
+  "subscription_tiers": {
+    "free": {
+      "price": 0,
+      "course_access": 5,
+      "categories_access": 1,
+      "features": ["Basic courses 1-5", "Platform access", "Community support"]
+    },
+    "pro": {
+      "price": 29,
+      "course_access": 87,
+      "categories_access": 12,
+      "features": ["All courses", "Quizzes", "Certificates", "Priority support", "Dispute templates"]
+    },
+    "enterprise": {
+      "price": 250,
+      "course_access": 87,
+      "categories_access": 12,
+      "features": [
+        "All Pro features",
+        "White-label software", 
+        "Business training program",
+        "1-on-1 support (3 months)",
+        "Weekly strategy calls"
+      ]
+    }
+  },
+  "learning_paths": {
+    "beginner": {
+      "name": "Credit Repair Fundamentals",
+      "modules": [1, 9, 11, 12],
+      "estimated_duration": 790,
+      "description": "Essential knowledge for starting your credit repair journey"
+    },
+    "intermediate": {
+      "name": "Professional Credit Management", 
+      "modules": [2, 3, 4, 5, 7],
+      "estimated_duration": 1220,
+      "description": "Advanced techniques for professional-level credit management"
+    },
+    "advanced": {
+      "name": "Expert Dispute Resolution",
+      "modules": [6, 8, 10],
+      "estimated_duration": 770,
+      "description": "Master-level strategies for complex credit situations"
+    }
+  }
+}
