@@ -53,20 +53,20 @@ export async function getUserSubscription(userId: string): Promise<UserSubscript
     }
 
     if (subscription && subscription.stripe_plans && Array.isArray(subscription.stripe_plans) && subscription.stripe_plans.length > 0) {
-      const plan = subscription.stripe_plans[0];
+      const plan = subscription.stripe_plans[0] as { plan_type?: string; monthly_limit?: number };
       return {
-        plan_type: plan.plan_type as PlanType,
-        status: subscription.status,
-        course_limit: plan.monthly_limit
+        plan_type: (plan.plan_type || 'free') as PlanType,
+        status: (subscription.status || 'active') as 'active' | 'trialing' | 'canceled' | 'past_due',
+        course_limit: plan.monthly_limit || 87
       };
     }
     
     if (subscription && subscription.stripe_plans && !Array.isArray(subscription.stripe_plans)) {
-      const plan = subscription.stripe_plans as any;
+      const plan = subscription.stripe_plans as { plan_type?: string; monthly_limit?: number };
       return {
-        plan_type: plan.plan_type as PlanType,
-        status: subscription.status,
-        course_limit: plan.monthly_limit
+        plan_type: (plan.plan_type || 'free') as PlanType,
+        status: (subscription.status || 'active') as 'active' | 'trialing' | 'canceled' | 'past_due',
+        course_limit: plan.monthly_limit || 87
       };
     }
 
@@ -101,12 +101,13 @@ export async function canAccessCourse(userId: string, courseId: string): Promise
     // Get course details
     const { data: course } = await supabase
       .from('courses')
-      .select('id, is_free')
+      .select('id, display_order')
       .eq('id', courseId)
       .single();
 
-    // If course is marked as free, allow access
-    if (course?.is_free) {
+    // First 5 courses (by display_order) are free for free users
+    // If course display_order is less than 5, allow access
+    if (course && (course.display_order ?? 0) < 5) {
       return true;
     }
 
