@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/contexts/AuthContext';
 import { CheckCircle, ChevronLeft, ChevronRight, Award, TrendingUp } from 'lucide-react';
-
+import DOMPurify from 'dompurify';
 export default function LessonPlayerPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
@@ -196,7 +196,7 @@ export default function LessonPlayerPage() {
             <h2 className="text-2xl font-bold text-neutral-900 mb-4">Lesson Content</h2>
             <div 
               className="text-neutral-700 leading-relaxed prose max-w-none"
-              dangerouslySetInnerHTML={{ __html: lesson?.content_html || '<p>This lesson covers important concepts in credit repair.</p>' }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(lesson?.content_html || '<p>This lesson covers important concepts in credit repair.</p>') }}
             />
           </div>
 
