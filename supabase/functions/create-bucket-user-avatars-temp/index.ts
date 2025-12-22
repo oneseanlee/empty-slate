@@ -24,9 +24,6 @@ Deno.serve(async (req) => {
         });
     }
 
-    // Extract project ref from URL
-    const projectRef = supabaseUrl.split('.')[0].replace('https://', '');
-
     // Storage API endpoint
     const storageUrl = `${supabaseUrl}/storage/v1/bucket`;
 
@@ -71,16 +68,20 @@ Deno.serve(async (req) => {
         });
     }
 
-    // Create public access policies for the bucket
+    // Create SECURE access policies for the bucket
+    // - Public SELECT: Anyone can view avatars (needed for displaying profile pictures)
+    // - Authenticated INSERT: Only logged-in users can upload to their own folder
+    // - Authenticated UPDATE: Only file owners can update
+    // - Authenticated DELETE: Only file owners can delete
     const policyQueries = [
-        // Allow public to view objects in this bucket
+        // Allow public to view objects in this bucket (needed for displaying avatars)
         `CREATE POLICY "Public Access for user-avatars" ON storage.objects FOR SELECT USING (bucket_id = 'user-avatars');`,
-        // Allow public to insert objects in this bucket
-        `CREATE POLICY "Public Upload for user-avatars" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'user-avatars');`,
-        // Allow public to update objects in this bucket
-        `CREATE POLICY "Public Update for user-avatars" ON storage.objects FOR UPDATE USING (bucket_id = 'user-avatars');`,
-        // Allow public to delete objects in this bucket
-        `CREATE POLICY "Public Delete for user-avatars" ON storage.objects FOR DELETE USING (bucket_id = 'user-avatars');`
+        // Allow authenticated users to upload to their own folder only
+        `CREATE POLICY "Authenticated Upload for user-avatars" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'user-avatars' AND auth.role() = 'authenticated' AND (storage.foldername(name))[1] = auth.uid()::text);`,
+        // Allow authenticated users to update their own files only
+        `CREATE POLICY "Owner Update for user-avatars" ON storage.objects FOR UPDATE USING (bucket_id = 'user-avatars' AND auth.role() = 'authenticated' AND (storage.foldername(name))[1] = auth.uid()::text);`,
+        // Allow authenticated users to delete their own files only
+        `CREATE POLICY "Owner Delete for user-avatars" ON storage.objects FOR DELETE USING (bucket_id = 'user-avatars' AND auth.role() = 'authenticated' AND (storage.foldername(name))[1] = auth.uid()::text);`
     ];
 
     // Execute policy creation queries
@@ -98,10 +99,10 @@ Deno.serve(async (req) => {
         });
 
         if (policyResponse.ok) {
-            policyResults.push(`Policy created: ${query.split(' ')[2]}`);
+            policyResults.push(`Policy created: ${query.split('"')[1]}`);
         } else {
             const errorText = await policyResponse.text();
-            policyResults.push(`Policy failed: ${query.split(' ')[2]} - ${errorText}`);
+            policyResults.push(`Policy failed: ${query.split('"')[1]} - ${errorText}`);
         }
         } catch (policyError) {
         policyResults.push(`Policy error: ${policyError instanceof Error ? policyError.message : 'Unknown error'}`);
@@ -111,7 +112,7 @@ Deno.serve(async (req) => {
     // Return success response
     return new Response(JSON.stringify({
         success: true,
-        message: 'Bucket created successfully with public access policies',
+        message: 'Bucket created successfully with secure access policies',
         bucket: {
         name: 'user-avatars',
         public: true,
