@@ -95,7 +95,7 @@ Deno.serve(async (req) => {
       JSON.stringify({ 
         error: {
           code: 'CHECKOUT_ERROR',
-          message: error.message,
+          message: error instanceof Error ? error.message : 'Unknown error',
         }
       }),
       { 

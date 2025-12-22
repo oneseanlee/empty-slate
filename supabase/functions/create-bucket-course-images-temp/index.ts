@@ -31,15 +31,19 @@ Deno.serve(async (req) => {
     const storageUrl = `${supabaseUrl}/storage/v1/bucket`;
 
     // Prepare bucket configuration
-    const bucketConfig = {
+    const bucketConfig: {
+        id: string;
+        name: string;
+        public: boolean;
+        allowed_mime_types?: string[];
+        file_size_limit?: number;
+    } = {
         id: 'course-images',
         name: 'course-images',
-        public: true
+        public: true,
+        allowed_mime_types: ["image/jpeg", "image/png", "image/webp"],
+        file_size_limit: 5242880
     };
-
-    // Add optional configurations
-    bucketConfig.allowed_mime_types = ["image/jpeg", "image/png", "image/webp"];
-    bucketConfig.file_size_limit = 5242880;
 
     // Create bucket using Storage API
     const response = await fetch(storageUrl, {
@@ -100,7 +104,7 @@ Deno.serve(async (req) => {
             policyResults.push(`Policy failed: ${query.split(' ')[2]} - ${errorText}`);
         }
         } catch (policyError) {
-        policyResults.push(`Policy error: ${policyError.message}`);
+        policyResults.push(`Policy error: ${policyError instanceof Error ? policyError.message : 'Unknown error'}`);
         }
     }
 
@@ -121,7 +125,7 @@ Deno.serve(async (req) => {
 
     } catch (error) {
     return new Response(JSON.stringify({
-        error: { code: 'FUNCTION_ERROR', message: error.message }
+        error: { code: 'FUNCTION_ERROR', message: error instanceof Error ? error.message : 'Unknown error' }
     }), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 500,
