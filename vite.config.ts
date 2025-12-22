@@ -1,25 +1,20 @@
 import path from "path"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
-import sourceIdentifierPlugin from 'vite-plugin-source-identifier'
+import { componentTagger } from "lovable-tagger"
 
-const isProd = process.env.BUILD_MODE === 'prod'
-export default defineConfig({
-  plugins: [
-    react(), 
-    sourceIdentifierPlugin({
-      enabled: !isProd,
-      attributePrefix: 'data-matrix',
-      includeProps: true,
-    })
-  ],
+export default defineConfig(({ mode }) => ({
   server: {
+    host: "::",
     port: 8080,
   },
+  plugins: [
+    react(),
+    mode === 'development' && componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-})
-
+}))
