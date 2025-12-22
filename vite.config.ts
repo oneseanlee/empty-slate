@@ -1,18 +1,22 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+import sourceIdentifierPlugin from 'vite-plugin-source-identifier'
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+const isProd = process.env.BUILD_MODE === 'prod'
+export default defineConfig({
+  plugins: [
+    react(), 
+    sourceIdentifierPlugin({
+      enabled: !isProd,
+      attributePrefix: 'data-matrix',
+      includeProps: true,
+    })
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-}));
+})
+

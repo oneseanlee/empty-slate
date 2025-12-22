@@ -1,0 +1,20 @@
+CREATE TABLE subscriptions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL,
+    user_id UUID NOT NULL,
+    stripe_subscription_id TEXT UNIQUE,
+    plan_type TEXT NOT NULL CHECK (plan_type IN ('free',
+    'monthly',
+    'annual',
+    'enterprise')),
+    status TEXT DEFAULT 'active' CHECK (status IN ('active',
+    'canceled',
+    'past_due',
+    'unpaid',
+    'trialing')),
+    current_period_start TIMESTAMPTZ,
+    current_period_end TIMESTAMPTZ,
+    trial_end TIMESTAMPTZ,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);

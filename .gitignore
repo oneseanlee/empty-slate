@@ -7,10 +7,35 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
+# Node / Vite
+node_modules/
+dist/
 dist-ssr
+.vite/
 *.local
+*.err
+
+# Python
+__pycache__/
+*.pyc
+
+# Env
+.env
+.env.*
+!.env.example
+
+# pnpm
+.pnpm-store/
+
+# Supabase local artifacts
+.supabase/
+supabase/.temp/
+
+# Local tooling outputs
+.browser_screenshots/
+
+# User uploads
+user_input_files/
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +47,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Root-only large artifacts
+/*.pdf
+/*.docx
+/package.zip
