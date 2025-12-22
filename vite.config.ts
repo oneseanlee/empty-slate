@@ -13,6 +13,9 @@ export default defineConfig({
       includeProps: true,
     })
   ],
+  server: {
+    port: 8080,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
