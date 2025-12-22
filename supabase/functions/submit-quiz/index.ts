@@ -143,7 +143,7 @@ Deno.serve(async (req) => {
         return new Response(JSON.stringify({
             error: {
                 code: 'SUBMIT_QUIZ_FAILED',
-                message: error.message
+                message: error instanceof Error ? error.message : 'Unknown error'
             }
         }), {
             status: 500,

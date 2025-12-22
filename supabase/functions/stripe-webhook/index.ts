@@ -124,7 +124,7 @@ Deno.serve(async (req) => {
       JSON.stringify({ 
         error: {
           code: 'WEBHOOK_ERROR',
-          message: error.message,
+          message: error instanceof Error ? error.message : 'Unknown error',
         }
       }),
       { 
