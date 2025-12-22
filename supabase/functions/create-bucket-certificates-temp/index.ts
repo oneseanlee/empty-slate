@@ -24,9 +24,6 @@ Deno.serve(async (req) => {
         });
     }
 
-    // Extract project ref from URL
-    const projectRef = supabaseUrl.split('.')[0].replace('https://', '');
-
     // Storage API endpoint
     const storageUrl = `${supabaseUrl}/storage/v1/bucket`;
 
@@ -71,16 +68,19 @@ Deno.serve(async (req) => {
         });
     }
 
-    // Create public access policies for the bucket
+    // Create SECURE access policies for the certificates bucket
+    // - Public SELECT: Anyone can view/download certificates (needed for verification)
+    // - Admin INSERT: Only admins/system can create certificates (via edge functions using service role)
+    // - No public UPDATE/DELETE: Certificates should be immutable
     const policyQueries = [
-        // Allow public to view objects in this bucket
+        // Allow public to view/download certificates (for verification)
         `CREATE POLICY "Public Access for certificates" ON storage.objects FOR SELECT USING (bucket_id = 'certificates');`,
-        // Allow public to insert objects in this bucket
-        `CREATE POLICY "Public Upload for certificates" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'certificates');`,
-        // Allow public to update objects in this bucket
-        `CREATE POLICY "Public Update for certificates" ON storage.objects FOR UPDATE USING (bucket_id = 'certificates');`,
-        // Allow public to delete objects in this bucket
-        `CREATE POLICY "Public Delete for certificates" ON storage.objects FOR DELETE USING (bucket_id = 'certificates');`
+        // Only authenticated admins can upload certificates (typically done by backend/edge functions)
+        `CREATE POLICY "Admin Upload for certificates" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'certificates' AND auth.role() = 'authenticated' AND EXISTS (SELECT 1 FROM users WHERE auth_user_id = auth.uid() AND role IN ('reseller_admin', 'super_admin')));`,
+        // Only admins can update certificates
+        `CREATE POLICY "Admin Update for certificates" ON storage.objects FOR UPDATE USING (bucket_id = 'certificates' AND auth.role() = 'authenticated' AND EXISTS (SELECT 1 FROM users WHERE auth_user_id = auth.uid() AND role IN ('reseller_admin', 'super_admin')));`,
+        // Only admins can delete certificates
+        `CREATE POLICY "Admin Delete for certificates" ON storage.objects FOR DELETE USING (bucket_id = 'certificates' AND auth.role() = 'authenticated' AND EXISTS (SELECT 1 FROM users WHERE auth_user_id = auth.uid() AND role IN ('reseller_admin', 'super_admin')));`
     ];
 
     // Execute policy creation queries
@@ -98,10 +98,10 @@ Deno.serve(async (req) => {
         });
 
         if (policyResponse.ok) {
-            policyResults.push(`Policy created: ${query.split(' ')[2]}`);
+            policyResults.push(`Policy created: ${query.split('"')[1]}`);
         } else {
             const errorText = await policyResponse.text();
-            policyResults.push(`Policy failed: ${query.split(' ')[2]} - ${errorText}`);
+            policyResults.push(`Policy failed: ${query.split('"')[1]} - ${errorText}`);
         }
         } catch (policyError) {
         policyResults.push(`Policy error: ${policyError instanceof Error ? policyError.message : 'Unknown error'}`);
@@ -111,7 +111,7 @@ Deno.serve(async (req) => {
     // Return success response
     return new Response(JSON.stringify({
         success: true,
-        message: 'Bucket created successfully with public access policies',
+        message: 'Bucket created successfully with secure access policies',
         bucket: {
         name: 'certificates',
         public: true,
