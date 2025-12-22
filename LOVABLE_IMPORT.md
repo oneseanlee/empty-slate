@@ -1,7 +1,7 @@
 Lovable Import Checklist
 
 1) Repo root
-   - Use the `scorepro-platform` folder as the project root when importing.
+   - Use the repo root as the project root when importing.
 
 2) Environment variables (in Lovable)
    - `VITE_SUPABASE_URL`
