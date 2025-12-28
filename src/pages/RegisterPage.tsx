@@ -22,7 +22,7 @@ export default function RegisterPage() {
       if (signUpError) throw signUpError;
 
       if (data.user) {
-        const { data: tenant } = await supabase.from('tenants').select('id').eq('slug', 'scorepro').maybeSingle();
+        const { data: tenant } = await supabase.from('tenants').select('id').eq('slug', 'credit-repair-university').maybeSingle();
 
         const { error: profileError } = await supabase.from('users').insert({
           auth_user_id: data.user.id,
