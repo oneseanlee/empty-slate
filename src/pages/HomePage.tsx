@@ -138,7 +138,8 @@ export default function HomePage() {
       <section id="about" className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 tracking-tight">
+            <span className="text-gold font-medium tracking-wider uppercase text-sm">WHY CHOOSE US</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 mt-2 tracking-tight">
               Why Credit Repair University
             </h2>
             <p className="text-lg text-slate-600">Premium features that deliver real results</p>
@@ -171,7 +172,7 @@ export default function HomePage() {
               return (
                 <div
                   key={idx}
-                  className="group bg-white rounded-xl p-8 hover:shadow-lg transition-all duration-300 border border-slate-100"
+                  className="group bg-white rounded-xl p-8 hover:shadow-lg hover:bg-navy-50 transition-all duration-300 border border-slate-100"
                 >
                   <div className="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors duration-300 shadow-sm">
                     <Icon className="w-7 h-7 text-navy group-hover:text-gold transition-colors" />
@@ -189,7 +190,8 @@ export default function HomePage() {
       <section id="courses" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 tracking-tight">
+            <span className="text-gold font-medium tracking-wider uppercase text-sm">OUR COURSES</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 mt-2 tracking-tight">
               12 Learning Paths
             </h2>
             <p className="text-lg text-slate-600">From fundamentals to advanced strategies</p>
@@ -243,10 +245,14 @@ export default function HomePage() {
       </section>
 
       {/* Social Proof - Dark Navy Background */}
-      <section className="py-24 bg-navy-900">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+      <section className="py-24 bg-navy-900 relative overflow-hidden">
+        {/* Decorative Quote Icon */}
+        <Quote className="absolute top-16 left-1/2 -translate-x-1/2 w-48 h-48 text-white opacity-[0.03]" />
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-semibold text-white mb-4 tracking-tight">
+            <span className="text-gold font-medium tracking-wider uppercase text-sm">TESTIMONIALS</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold text-white mb-4 mt-2 tracking-tight">
               Real Results from Real People
             </h2>
             <p className="text-lg text-slate-300">Join thousands transforming their financial future</p>
@@ -308,7 +314,8 @@ export default function HomePage() {
       <section id="pricing" className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 tracking-tight">
+            <span className="text-gold font-medium tracking-wider uppercase text-sm">PRICING</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 mt-2 tracking-tight">
               Choose Your Plan
             </h2>
             <p className="text-lg text-slate-600">Start free, upgrade anytime for full access</p>
@@ -470,7 +477,8 @@ export default function HomePage() {
       <section id="faq" className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-16">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 tracking-tight">
+            <span className="text-gold font-medium tracking-wider uppercase text-sm">FAQ</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 mt-2 tracking-tight">
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-slate-600">Everything you need to know</p>
