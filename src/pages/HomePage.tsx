@@ -428,19 +428,19 @@ export default function HomePage() {
                   <span className="text-slate-600">Everything in Pro</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-navy flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600 font-semibold">White-labeled credit repair software</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-navy flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600 font-semibold">Complete business training program</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-navy flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600 font-semibold">1-on-1 business launch support</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-navy flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600">Weekly coaching calls (3 months)</span>
                 </li>
               </ul>
