@@ -26,6 +26,11 @@ export default function LoginPage() {
     }
   };
 
+  const handleDemoLogin = () => {
+    setEmail('demo@creditrepairuniversity.com');
+    setPassword('Demo123!');
+  };
+
   return (
     <div className="min-h-screen bg-neutral-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
@@ -77,6 +82,24 @@ export default function LoginPage() {
               {loading ? 'Signing In...' : 'Sign In'}
             </button>
           </form>
+
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-neutral-200"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-4 bg-white text-neutral-500">or try demo</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleDemoLogin}
+            className="w-full bg-accent-100 text-accent-700 py-3 px-6 rounded-lg font-semibold hover:bg-accent-200 transition-all border border-accent-300 flex items-center justify-center gap-2"
+          >
+            <span>🎮</span>
+            Try Demo Account
+          </button>
 
           <div className="mt-6 text-center">
             <p className="text-neutral-600 text-sm">
