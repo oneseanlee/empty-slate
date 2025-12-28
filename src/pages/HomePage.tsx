@@ -57,51 +57,59 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section - Dark Navy Overlay */}
+      {/* Hero Section - Dark Navy Overlay with Background Image */}
       <section id="top" className="relative pt-24 min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background Image with Navy Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy to-navy-800"></div>
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/hero-bg.jpg)' }}
+        ></div>
+        {/* Navy Overlay */}
+        <div className="absolute inset-0" style={{ backgroundColor: 'hsl(217, 85%, 15%)', opacity: 0.85 }}></div>
+        {/* Gradient fade at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(217,85%,15%)] via-transparent to-transparent"></div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-16 py-20 text-center">
           {/* Coral Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-coral/20 rounded-full border border-coral/30 mb-8">
-            <Sparkles className="w-4 h-4 text-coral" />
-            <span className="text-coral font-semibold text-sm">7-Day Free Trial • No Credit Card Required</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8" style={{ backgroundColor: 'hsla(0, 78%, 61%, 0.2)', border: '1px solid hsla(0, 78%, 61%, 0.3)' }}>
+            <Sparkles className="w-4 h-4" style={{ color: 'hsl(0, 78%, 61%)' }} />
+            <span className="font-semibold text-sm" style={{ color: 'hsl(0, 78%, 61%)' }}>7-Day Free Trial • No Credit Card Required</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 text-white tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 tracking-tight" style={{ color: '#ffffff' }}>
             Master Credit Repair Education
-            <span className="block mt-2 text-coral">Start Free, Upgrade Anytime</span>
+            <span className="block mt-2" style={{ color: 'hsl(0, 78%, 61%)' }}>Start Free, Upgrade Anytime</span>
           </h1>
 
-          <p className="text-lg lg:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Try <span className="text-white font-semibold">5 courses free</span>, then upgrade to Pro for full access to{' '}
-            <span className="text-white font-semibold">87 expert-led tutorials</span>, interactive quizzes, and professional certifications.
+          <p className="text-lg lg:text-xl max-w-3xl mx-auto mb-10 leading-relaxed" style={{ color: 'hsl(210, 40%, 78%)' }}>
+            Try <span className="font-semibold" style={{ color: '#ffffff' }}>5 courses free</span>, then upgrade to Pro for full access to{' '}
+            <span className="font-semibold" style={{ color: '#ffffff' }}>87 expert-led tutorials</span>, interactive quizzes, and professional certifications.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
             <Link
               to="/register"
-              className="px-8 py-4 rounded-lg font-semibold text-lg bg-coral text-white hover:bg-coral-hover transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+              className="px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+              style={{ backgroundColor: 'hsl(0, 78%, 61%)', color: '#ffffff' }}
             >
               Start Free Trial
               <ArrowRight className="w-5 h-5" />
             </Link>
             <a
               href="#pricing"
-              className="px-8 py-4 rounded-lg font-semibold text-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+              className="px-8 py-4 rounded-lg font-semibold text-lg backdrop-blur-sm transition-all duration-300"
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)', color: '#ffffff' }}
             >
               View Pricing Plans
             </a>
           </div>
 
-          <p className="text-slate-400 text-sm mb-16">No credit card required</p>
+          <p className="text-sm mb-16" style={{ color: 'hsl(210, 20%, 55%)' }}>No credit card required</p>
         </div>
 
         {/* Stats Bar at Bottom */}
-        <div className="absolute bottom-0 left-0 right-0 bg-navy-900/80 backdrop-blur-md border-t border-white/10">
+        <div className="absolute bottom-0 left-0 right-0 backdrop-blur-md" style={{ backgroundColor: 'hsla(217, 85%, 15%, 0.6)', borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
           <div className="max-w-7xl mx-auto px-6 lg:px-16 py-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
@@ -113,10 +121,10 @@ export default function HomePage() {
                 const Icon = stat.icon;
                 return (
                   <div key={idx} className="flex items-center gap-3">
-                    <Icon className="w-6 h-6 text-coral flex-shrink-0" />
+                    <Icon className="w-6 h-6 flex-shrink-0" style={{ color: 'hsl(0, 78%, 61%)' }} />
                     <div>
-                      <div className="text-2xl font-semibold text-white">{stat.value}</div>
-                      <div className="text-sm text-slate-300">{stat.label}</div>
+                      <div className="text-2xl font-semibold" style={{ color: '#ffffff' }}>{stat.value}</div>
+                      <div className="text-sm" style={{ color: 'hsl(210, 40%, 78%)' }}>{stat.label}</div>
                     </div>
                   </div>
                 );
