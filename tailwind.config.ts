@@ -64,9 +64,10 @@ export default {
           800: "hsl(var(--navy-800))",
           900: "hsl(var(--navy-900))",
         },
-        coral: {
-          DEFAULT: "hsl(var(--coral))",
-          hover: "hsl(var(--coral-hover))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          hover: "hsl(var(--gold-hover))",
+          light: "hsl(var(--gold-light))",
         },
         slate: {
           50: "hsl(var(--slate-50))",
