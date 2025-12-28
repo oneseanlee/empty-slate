@@ -38,18 +38,18 @@ export default function HomePage() {
 
           {/* Nav Links */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#courses" className="text-navy hover:text-coral font-semibold transition-colors duration-200">COURSES</a>
-            <a href="#about" className="text-navy hover:text-coral font-semibold transition-colors duration-200">ABOUT</a>
-            <a href="#pricing" className="text-navy hover:text-coral font-semibold transition-colors duration-200">PRICING</a>
-            <a href="#faq" className="text-navy hover:text-coral font-semibold transition-colors duration-200">FAQ</a>
-            <Link to="/login" className="text-navy hover:text-coral font-semibold transition-colors duration-200">LOGIN</Link>
+            <a href="#courses" className="text-navy hover:text-gold font-semibold transition-colors duration-200">COURSES</a>
+            <a href="#about" className="text-navy hover:text-gold font-semibold transition-colors duration-200">ABOUT</a>
+            <a href="#pricing" className="text-navy hover:text-gold font-semibold transition-colors duration-200">PRICING</a>
+            <a href="#faq" className="text-navy hover:text-gold font-semibold transition-colors duration-200">FAQ</a>
+            <Link to="/login" className="text-navy hover:text-gold font-semibold transition-colors duration-200">LOGIN</Link>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
             <Link
               to="/register"
-              className="px-6 py-2.5 rounded-lg font-semibold text-base bg-coral text-white hover:bg-coral-hover transition-all duration-300 shadow-md hover:shadow-lg"
+              className="px-6 py-2.5 rounded-lg font-semibold text-base bg-gold text-navy hover:bg-gold-hover transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Start Free Trial
             </Link>
@@ -70,15 +70,15 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-[hsl(217,85%,15%)] via-transparent to-transparent"></div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-16 py-20 text-center">
-          {/* Coral Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8" style={{ backgroundColor: 'hsla(0, 78%, 61%, 0.2)', border: '1px solid hsla(0, 78%, 61%, 0.3)' }}>
-            <Sparkles className="w-4 h-4" style={{ color: 'hsl(0, 78%, 61%)' }} />
-            <span className="font-semibold text-sm" style={{ color: 'hsl(0, 78%, 61%)' }}>7-Day Free Trial • No Credit Card Required</span>
+          {/* Gold Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8" style={{ backgroundColor: 'hsla(43, 47%, 60%, 0.2)', border: '1px solid hsla(43, 47%, 60%, 0.4)' }}>
+            <Sparkles className="w-4 h-4" style={{ color: 'hsl(43, 47%, 60%)' }} />
+            <span className="font-semibold text-sm" style={{ color: 'hsl(43, 47%, 60%)' }}>7-Day Free Trial • No Credit Card Required</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 tracking-tight" style={{ color: '#ffffff' }}>
             Master Credit Repair Education
-            <span className="block mt-2" style={{ color: 'hsl(0, 78%, 61%)' }}>Start Free, Upgrade Anytime</span>
+            <span className="block mt-2" style={{ color: 'hsl(43, 47%, 60%)' }}>Start Free, Upgrade Anytime</span>
           </h1>
 
           <p className="text-lg lg:text-xl max-w-3xl mx-auto mb-10 leading-relaxed" style={{ color: 'hsl(210, 40%, 78%)' }}>
@@ -91,7 +91,7 @@ export default function HomePage() {
             <Link
               to="/register"
               className="px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-              style={{ backgroundColor: 'hsl(0, 78%, 61%)', color: '#ffffff' }}
+              style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
             >
               Start Free Trial
               <ArrowRight className="w-5 h-5" />
@@ -121,7 +121,7 @@ export default function HomePage() {
                 const Icon = stat.icon;
                 return (
                   <div key={idx} className="flex items-center gap-3">
-                    <Icon className="w-6 h-6 flex-shrink-0" style={{ color: 'hsl(0, 78%, 61%)' }} />
+                    <Icon className="w-6 h-6 flex-shrink-0" style={{ color: 'hsl(43, 47%, 60%)' }} />
                     <div>
                       <div className="text-2xl font-semibold" style={{ color: '#ffffff' }}>{stat.value}</div>
                       <div className="text-sm" style={{ color: 'hsl(210, 40%, 78%)' }}>{stat.label}</div>
@@ -173,8 +173,8 @@ export default function HomePage() {
                   key={idx}
                   className="group bg-white rounded-xl p-8 hover:shadow-lg transition-all duration-300 border border-slate-100"
                 >
-                  <div className="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-coral/10 transition-colors duration-300 shadow-sm">
-                    <Icon className="w-7 h-7 text-navy group-hover:text-coral transition-colors" />
+                  <div className="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors duration-300 shadow-sm">
+                    <Icon className="w-7 h-7 text-navy group-hover:text-gold transition-colors" />
                   </div>
                   <h3 className="text-xl font-semibold text-navy mb-3">{feature.title}</h3>
                   <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
@@ -214,14 +214,14 @@ export default function HomePage() {
               return (
                 <div
                   key={idx}
-                  className="group bg-white rounded-xl p-5 hover:shadow-md transition-all duration-300 cursor-pointer border border-slate-200 hover:border-coral/50"
+                  className="group bg-white rounded-xl p-5 hover:shadow-md transition-all duration-300 cursor-pointer border border-slate-200 hover:border-gold/50"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-navy rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-coral transition-colors duration-300">
-                      <Icon className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 bg-navy rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-gold transition-colors duration-300">
+                      <Icon className="w-6 h-6 text-white group-hover:text-navy" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-base font-semibold text-navy mb-1 group-hover:text-coral transition-colors">{category.name}</h3>
+                      <h3 className="text-base font-semibold text-navy mb-1 group-hover:text-gold-hover transition-colors">{category.name}</h3>
                       <p className="text-slate-600 text-sm">{category.courses} courses</p>
                     </div>
                   </div>
@@ -233,7 +233,7 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <Link
               to="/courses"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-coral text-white rounded-lg font-semibold text-lg hover:bg-coral-hover transition-all duration-300 shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-navy rounded-lg font-semibold text-lg hover:bg-gold-hover transition-all duration-300 shadow-md hover:shadow-lg"
             >
               View All Courses
               <ArrowRight className="w-5 h-5" />
@@ -278,11 +278,11 @@ export default function HomePage() {
             ].map((testimonial, idx) => (
               <div
                 key={idx}
-                className="bg-navy-800 rounded-xl p-8 border border-navy/50 hover:border-coral/30 transition-all duration-300"
+                className="bg-navy-800 rounded-xl p-8 border border-navy/50 hover:border-gold/30 transition-all duration-300"
               >
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.stars)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-coral text-coral" />
+                    <Star key={i} className="w-5 h-5 fill-gold text-gold" />
                   ))}
                 </div>
                 <Quote className="w-8 h-8 text-white/20 mb-4" />
@@ -294,7 +294,7 @@ export default function HomePage() {
                       <p className="text-sm text-slate-400">{testimonial.role}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-semibold text-coral text-lg">{testimonial.result}</p>
+                      <p className="font-semibold text-gold text-lg">{testimonial.result}</p>
                     </div>
                   </div>
                 </div>
@@ -329,19 +329,19 @@ export default function HomePage() {
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600">Access to 5 courses (limited selection)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600">Basic progress tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600">XP and levels system</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600">Badge earning</span>
                 </li>
               </ul>
@@ -355,45 +355,45 @@ export default function HomePage() {
 
             {/* Pro Plan - Most Popular */}
             <div className="relative bg-navy rounded-xl p-8 shadow-xl transform scale-105">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-coral text-white px-4 py-1.5 rounded-full text-sm font-semibold">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold text-navy px-4 py-1.5 rounded-full text-sm font-semibold">
                 MOST POPULAR
               </div>
               <div className="flex items-center gap-3 mb-6 mt-2">
                 <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                  <Crown className="w-6 h-6 text-coral" />
+                  <Crown className="w-6 h-6 text-gold" />
                 </div>
                 <h3 className="text-xl font-semibold text-white">Pro Plan</h3>
               </div>
               <div className="mb-6">
                 <span className="text-4xl font-semibold text-white">$29</span>
                 <span className="text-slate-300 text-lg">/month</span>
-                <p className="text-sm text-coral font-semibold mt-2">7-day free trial included</p>
+                <p className="text-sm text-gold font-semibold mt-2">7-day free trial included</p>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-200">All 87 courses (complete curriculum)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-200">All 97 quizzes</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-200">Certificates upon completion</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-200">Full progress tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-200">Priority support</span>
                 </li>
               </ul>
               <Link
                 to="/billing"
-                className="block w-full py-3 rounded-lg font-semibold text-center bg-coral text-white hover:bg-coral-hover transition-all duration-300"
+                className="block w-full py-3 rounded-lg font-semibold text-center bg-gold text-navy hover:bg-gold-hover transition-all duration-300"
               >
                 Start Pro Trial
               </Link>
@@ -413,11 +413,11 @@ export default function HomePage() {
               <div className="mb-6">
                 <span className="text-4xl font-semibold text-navy">$250</span>
                 <span className="text-slate-600 text-lg">/month</span>
-                <p className="text-sm text-coral font-semibold mt-2">7-day free trial included</p>
+                <p className="text-sm text-gold font-semibold mt-2">7-day free trial included</p>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-coral flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600">Everything in Pro</span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -457,7 +457,7 @@ export default function HomePage() {
               const Icon = item.icon;
               return (
                 <div key={idx} className="flex items-center gap-3 bg-white rounded-lg p-4 border border-slate-200">
-                  <Icon className="w-5 h-5 text-coral flex-shrink-0" />
+                  <Icon className="w-5 h-5 text-gold flex-shrink-0" />
                   <span className="text-slate-600 text-sm font-medium">{item.text}</span>
                 </div>
               );
@@ -518,7 +518,7 @@ export default function HomePage() {
                 >
                   <span className="font-semibold text-navy pr-8">{faq.question}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-coral flex-shrink-0 transition-transform duration-300 ${
+                    className={`w-5 h-5 text-gold flex-shrink-0 transition-transform duration-300 ${
                       openFaqIndex === idx ? 'rotate-180' : ''
                     }`}
                   />
@@ -536,24 +536,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Band - Coral Background */}
-      <section className="py-20 bg-coral">
+      {/* CTA Band - Gold Background */}
+      <section className="py-20 bg-gold">
         <div className="max-w-5xl mx-auto px-6 lg:px-16 text-center">
-          <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-6 tracking-tight">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-navy mb-6 tracking-tight">
             Ready to Transform Your Credit Score?
           </h2>
-          <p className="text-lg text-white/90 mb-10 leading-relaxed">
+          <p className="text-lg text-navy/80 mb-10 leading-relaxed">
             Start with 5 free courses. No credit card required.
           </p>
 
           <Link
             to="/register"
-            className="inline-flex items-center gap-3 px-10 py-4 rounded-lg font-semibold text-lg bg-white text-coral hover:bg-slate-100 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-3 px-10 py-4 rounded-lg font-semibold text-lg bg-navy text-white hover:bg-navy-800 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Start Free Trial
             <ArrowRight className="w-5 h-5" />
           </Link>
-          <p className="mt-6 text-white/80 text-sm">Upgrade anytime. Cancel anytime. No risk.</p>
+          <p className="mt-6 text-navy/70 text-sm">Upgrade anytime. Cancel anytime. No risk.</p>
         </div>
       </section>
 
@@ -573,10 +573,10 @@ export default function HomePage() {
             <div>
               <h3 className="font-semibold text-white mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <Link to="/courses" className="block text-slate-300 hover:text-coral transition-colors text-sm">All Courses</Link>
-                <a href="#about" className="block text-slate-300 hover:text-coral transition-colors text-sm">About</a>
-                <a href="#pricing" className="block text-slate-300 hover:text-coral transition-colors text-sm">Pricing</a>
-                <a href="#faq" className="block text-slate-300 hover:text-coral transition-colors text-sm">FAQ</a>
+                <Link to="/courses" className="block text-slate-300 hover:text-gold transition-colors text-sm">All Courses</Link>
+                <a href="#about" className="block text-slate-300 hover:text-gold transition-colors text-sm">About</a>
+                <a href="#pricing" className="block text-slate-300 hover:text-gold transition-colors text-sm">Pricing</a>
+                <a href="#faq" className="block text-slate-300 hover:text-gold transition-colors text-sm">FAQ</a>
               </div>
             </div>
 
@@ -584,10 +584,10 @@ export default function HomePage() {
             <div>
               <h3 className="font-semibold text-white mb-4">Get Started</h3>
               <div className="space-y-2">
-                <Link to="/login" className="block text-slate-300 hover:text-coral transition-colors text-sm">Login</Link>
-                <Link to="/register" className="block text-slate-300 hover:text-coral transition-colors text-sm">Sign Up Free</Link>
-                <a href="#" className="block text-slate-300 hover:text-coral transition-colors text-sm">Privacy Policy</a>
-                <a href="#" className="block text-slate-300 hover:text-coral transition-colors text-sm">Terms of Service</a>
+                <Link to="/login" className="block text-slate-300 hover:text-gold transition-colors text-sm">Login</Link>
+                <Link to="/register" className="block text-slate-300 hover:text-gold transition-colors text-sm">Sign Up Free</Link>
+                <a href="#" className="block text-slate-300 hover:text-gold transition-colors text-sm">Privacy Policy</a>
+                <a href="#" className="block text-slate-300 hover:text-gold transition-colors text-sm">Terms of Service</a>
               </div>
             </div>
           </div>
