@@ -57,6 +57,24 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          50: "hsl(var(--navy-50))",
+          100: "hsl(var(--navy-100))",
+          800: "hsl(var(--navy-800))",
+          900: "hsl(var(--navy-900))",
+        },
+        coral: {
+          DEFAULT: "hsl(var(--coral))",
+          hover: "hsl(var(--coral-hover))",
+        },
+        slate: {
+          50: "hsl(var(--slate-50))",
+          100: "hsl(var(--slate-100))",
+          200: "hsl(var(--slate-200))",
+          300: "hsl(var(--slate-300))",
+          600: "hsl(var(--slate-600))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
