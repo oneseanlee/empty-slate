@@ -245,7 +245,7 @@ export default function HomePage() {
       </section>
 
       {/* Social Proof - Dark Navy Background */}
-      <section className="py-24 bg-navy-900 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: 'hsl(217, 85%, 15%)' }}>
         {/* Decorative Quote Icon */}
         <Quote className="absolute top-16 left-1/2 -translate-x-1/2 w-48 h-48 text-white opacity-[0.03]" />
         
@@ -284,7 +284,8 @@ export default function HomePage() {
             ].map((testimonial, idx) => (
               <div
                 key={idx}
-                className="bg-navy-800 rounded-xl p-8 border border-navy/50 hover:border-gold/30 transition-all duration-300"
+                className="rounded-xl p-8 transition-all duration-300 hover:scale-[1.02]"
+                style={{ backgroundColor: 'hsl(217, 85%, 22%)', border: '1px solid rgba(11, 61, 145, 0.5)' }}
               >
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.stars)].map((_, i) => (
