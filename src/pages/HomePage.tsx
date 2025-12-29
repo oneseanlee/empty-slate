@@ -168,9 +168,9 @@ export default function HomePage() {
                 desc: 'Start free, upgrade when ready. Cancel anytime - no long-term commitment.',
               },
               {
-                icon: Building2,
-                title: 'Complete Business Platform',
-                desc: 'Enterprise plan includes white-labeled software, full training, and 1-on-1 support to launch your credit repair business.',
+                icon: Users,
+                title: 'Expert-Led Content',
+                desc: 'Learn from industry professionals with years of real-world credit repair experience.',
               }
             ].map((feature, idx) => {
               const Icon = feature.icon;
@@ -289,11 +289,11 @@ export default function HomePage() {
                 role: 'First-Time Homebuyer'
               },
               {
-                name: 'Jennifer Lee',
-                result: 'Started Credit Repair Business',
-                quote: 'The Enterprise plan gave me everything I needed - software, training, and support. Launched in 90 days!',
+                name: 'David Chen',
+                result: '+150 Points',
+                quote: 'The step-by-step curriculum made everything so clear. I went from a 520 to 670 in just 4 months!',
                 stars: 5,
-                role: 'Credit Repair Business Owner'
+                role: 'Teacher'
               }
             ].map((testimonial, idx) => (
               <div
@@ -336,7 +336,7 @@ export default function HomePage() {
             <p className="text-lg" style={{ color: 'hsl(215, 20%, 45%)' }}>Start free, upgrade anytime for full access</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
             {/* Free Plan */}
             <div 
               className="rounded-xl p-8 hover:shadow-lg transition-all duration-300"
@@ -442,74 +442,14 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Enterprise Plan */}
-            <div 
-              className="relative rounded-xl p-8 hover:shadow-lg transition-all duration-300"
-              style={{ backgroundColor: '#ffffff', border: '1px solid hsl(214, 32%, 91%)' }}
-            >
-              <div 
-                className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap"
-                style={{ backgroundColor: 'hsl(217, 85%, 31%)', color: '#ffffff' }}
-              >
-                BUSINESS LAUNCH
-              </div>
-              <div className="flex items-center gap-3 mb-6 mt-2">
-                <div 
-                  className="w-12 h-12 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: 'hsla(217, 85%, 31%, 0.1)' }}
-                >
-                  <Building2 className="w-6 h-6" style={{ color: 'hsl(217, 85%, 31%)' }} />
-                </div>
-                <h3 className="text-xl font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>Enterprise</h3>
-              </div>
-              <div className="mb-6">
-                <span className="text-4xl font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>$250</span>
-                <span className="text-lg" style={{ color: 'hsl(215, 20%, 45%)' }}>/month</span>
-                <p className="text-sm font-semibold mt-2" style={{ color: 'hsl(43, 47%, 60%)' }}>7-day free trial included</p>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
-                  <span style={{ color: 'hsl(215, 20%, 45%)' }}>Everything in Pro</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
-                  <span className="font-semibold" style={{ color: 'hsl(215, 20%, 45%)' }}>White-labeled credit repair software</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
-                  <span className="font-semibold" style={{ color: 'hsl(215, 20%, 45%)' }}>Complete business training program</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
-                  <span className="font-semibold" style={{ color: 'hsl(215, 20%, 45%)' }}>1-on-1 business launch support</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
-                  <span style={{ color: 'hsl(215, 20%, 45%)' }}>Weekly coaching calls (3 months)</span>
-                </li>
-              </ul>
-              <Link
-                to="/billing"
-                className="block w-full py-3 rounded-lg font-semibold text-center transition-all duration-300"
-                style={{ 
-                  border: '2px solid hsl(217, 85%, 31%)', 
-                  color: 'hsl(217, 85%, 31%)',
-                  backgroundColor: 'transparent'
-                }}
-              >
-                Start Business Launch Program
-              </Link>
-            </div>
           </div>
 
           {/* Value Props */}
-          <div className="grid md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {[
               { icon: Sparkles, text: 'Try Before You Buy - 5 Free Courses' },
               { icon: ArrowRight, text: 'Upgrade Anytime for Full Access' },
               { icon: Shield, text: 'No Risk - Cancel Anytime' },
-              { icon: Building2, text: 'Launch Your Credit Repair Business in 90 Days' },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -546,27 +486,23 @@ export default function HomePage() {
               },
               {
                 question: 'What is included in the 7-day trial?',
-                answer: 'Pro and Enterprise plans include a 7-day free trial with full access to all features. No charges during the trial. Cancel anytime before the trial ends with no cost.'
+                answer: 'The Pro plan includes a 7-day free trial with full access to all features. No charges during the trial. Cancel anytime before the trial ends with no cost.'
               },
               {
                 question: 'Can I upgrade or downgrade my plan?',
-                answer: 'Yes! Upgrade from Free to Pro or Enterprise anytime. You can also cancel or downgrade. Changes take effect at the next billing cycle.'
+                answer: 'Yes! Upgrade from Free to Pro anytime. You can also cancel or downgrade. Changes take effect at the next billing cycle.'
               },
               {
                 question: 'How do the certifications work?',
-                answer: 'Pro and Enterprise users can earn professional certificates by completing all lessons and passing quizzes in any category. Instantly downloadable and shareable on LinkedIn.'
-              },
-              {
-                question: 'What is included in the Enterprise business launch program?',
-                answer: 'Enterprise plan is a complete business launch package including: white-labeled credit repair software platform, comprehensive business training, weekly 1-on-1 coaching calls for 3 months, marketing strategies, legal compliance guidance, and ongoing support to help you successfully launch and grow your credit repair business.'
+                answer: 'Pro users can earn professional certificates by completing all lessons and passing quizzes in any category. Instantly downloadable and shareable on LinkedIn.'
               },
               {
                 question: 'How does billing work?',
-                answer: 'Plans are billed monthly. Free plan has no charges. Pro is $29/month, Enterprise is $99/month. All paid plans include a 7-day free trial. Cancel anytime.'
+                answer: 'Plans are billed monthly. Free plan has no charges. Pro is $29/month and includes a 7-day free trial. Cancel anytime.'
               },
               {
                 question: 'What support is available?',
-                answer: 'Free users have community access. Pro users get priority support with faster response times. Enterprise users receive dedicated support with a personal account manager.'
+                answer: 'Free users have community access. Pro users get priority support with faster response times.'
               },
             ].map((faq, idx) => (
               <div
