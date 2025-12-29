@@ -18,12 +18,17 @@
     --gold-hover: 43 47% 50%;
     --gold-light: 43 47% 90%;
     
-    /* Slate palette */
+    /* Slate palette - Complete */
     --slate-50: 210 40% 98%;
     --slate-100: 210 40% 96%;
     --slate-200: 214 32% 91%;
     --slate-300: 213 27% 84%;
+    --slate-400: 215 20% 65%;
+    --slate-500: 215 16% 47%;
     --slate-600: 215 20% 45%;
+    --slate-700: 215 25% 27%;
+    --slate-800: 217 33% 17%;
+    --slate-900: 222 47% 11%;
     
     /* Core tokens */
     --background: 0 0% 100%;
