@@ -255,7 +255,7 @@ export default function HomePage() {
             <h2 className="text-3xl lg:text-5xl font-semibold text-white mb-4 mt-2 tracking-tight">
               Real Results from Real People
             </h2>
-            <p className="text-lg text-slate-300">Join thousands transforming their financial future</p>
+            <p className="text-lg" style={{ color: 'hsl(213, 27%, 75%)' }}>Join thousands transforming their financial future</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -292,12 +292,12 @@ export default function HomePage() {
                   ))}
                 </div>
                 <Quote className="w-8 h-8 text-white/20 mb-4" />
-                <p className="text-slate-200 mb-6 leading-relaxed italic">"{testimonial.quote}"</p>
+                <p className="mb-6 leading-relaxed italic" style={{ color: 'hsl(214, 32%, 85%)' }}>"{testimonial.quote}"</p>
                 <div className="border-t border-white/10 pt-4">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-semibold text-white">{testimonial.name}</p>
-                      <p className="text-sm text-slate-400">{testimonial.role}</p>
+                      <p className="text-sm" style={{ color: 'hsl(215, 20%, 70%)' }}>{testimonial.role}</p>
                     </div>
                     <div className="text-right">
                       <p className="font-semibold text-gold text-lg">{testimonial.result}</p>
@@ -373,29 +373,29 @@ export default function HomePage() {
               </div>
               <div className="mb-6">
                 <span className="text-4xl font-semibold text-white">$29</span>
-                <span className="text-slate-300 text-lg">/month</span>
+                <span className="text-lg" style={{ color: 'hsl(213, 27%, 75%)' }}>/month</span>
                 <p className="text-sm text-gold font-semibold mt-2">7-day free trial included</p>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-200">All 87 courses (complete curriculum)</span>
+                  <span style={{ color: 'hsl(214, 32%, 85%)' }}>All 87 courses (complete curriculum)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-200">All 97 quizzes</span>
+                  <span style={{ color: 'hsl(214, 32%, 85%)' }}>All 97 quizzes</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-200">Certificates upon completion</span>
+                  <span style={{ color: 'hsl(214, 32%, 85%)' }}>Certificates upon completion</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-200">Full progress tracking</span>
+                  <span style={{ color: 'hsl(214, 32%, 85%)' }}>Full progress tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-200">Priority support</span>
+                  <span style={{ color: 'hsl(214, 32%, 85%)' }}>Priority support</span>
                 </li>
               </ul>
               <Link
@@ -574,17 +574,17 @@ export default function HomePage() {
               <Link to="/" className="inline-block mb-4">
                 <img src="/cru_logo.png" alt="Credit Repair University" className="h-16 object-contain brightness-0 invert hover:opacity-80 transition-opacity duration-300" />
               </Link>
-              <p className="text-slate-300 text-sm leading-relaxed max-w-md">The leading credit repair education platform empowering 10,000+ learners worldwide to take control of their financial future.</p>
+              <p className="text-sm leading-relaxed max-w-md" style={{ color: 'hsl(213, 27%, 75%)' }}>The leading credit repair education platform empowering 10,000+ learners worldwide to take control of their financial future.</p>
             </div>
 
             {/* Quick Links */}
             <div>
               <h3 className="font-semibold text-white mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <Link to="/courses" className="block text-slate-300 hover:text-gold transition-colors text-sm">All Courses</Link>
-                <a href="#about" className="block text-slate-300 hover:text-gold transition-colors text-sm">About</a>
-                <a href="#pricing" className="block text-slate-300 hover:text-gold transition-colors text-sm">Pricing</a>
-                <a href="#faq" className="block text-slate-300 hover:text-gold transition-colors text-sm">FAQ</a>
+                <Link to="/courses" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>All Courses</Link>
+                <a href="#about" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>About</a>
+                <a href="#pricing" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Pricing</a>
+                <a href="#faq" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>FAQ</a>
               </div>
             </div>
 
@@ -592,17 +592,17 @@ export default function HomePage() {
             <div>
               <h3 className="font-semibold text-white mb-4">Get Started</h3>
               <div className="space-y-2">
-                <Link to="/login" className="block text-slate-300 hover:text-gold transition-colors text-sm">Login</Link>
-                <Link to="/register" className="block text-slate-300 hover:text-gold transition-colors text-sm">Sign Up Free</Link>
-                <a href="#" className="block text-slate-300 hover:text-gold transition-colors text-sm">Privacy Policy</a>
-                <a href="#" className="block text-slate-300 hover:text-gold transition-colors text-sm">Terms of Service</a>
+                <Link to="/login" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Login</Link>
+                <Link to="/register" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Sign Up Free</Link>
+                <a href="#" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Privacy Policy</a>
+                <a href="#" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Terms of Service</a>
               </div>
             </div>
           </div>
 
           {/* Bottom */}
           <div className="border-t border-white/10 pt-8">
-            <p className="text-center text-slate-400 text-sm">
+            <p className="text-center text-sm" style={{ color: 'hsl(215, 20%, 70%)' }}>
               &copy; 2025 Credit Repair University. Professional Credit Repair Education.
             </p>
           </div>
