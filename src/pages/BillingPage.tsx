@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CreditCard, Check, AlertCircle, Crown, Sparkles, Building2, ArrowRight, Shield, Zap } from 'lucide-react';
+import { Check, Crown, Sparkles, Building2, ArrowLeft, Shield, Zap, LogOut } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import toast from 'react-hot-toast';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface Plan {
   id: string;
@@ -63,6 +64,7 @@ const PLANS: Plan[] = [
 ];
 
 export default function BillingPage() {
+  const { signOut } = useAuth();
   const [user, setUser] = useState<any>(null);
   const [subscription, setSubscription] = useState<any>(null);
   const [loading, setLoading] = useState<string | null>(null);
@@ -73,7 +75,6 @@ export default function BillingPage() {
       if (user) fetchSubscription(user.id);
     });
 
-    // Handle payment result
     const urlParams = new URLSearchParams(window.location.search);
     const subscriptionStatus = urlParams.get('subscription');
     const sessionId = urlParams.get('session_id');
@@ -150,36 +151,44 @@ export default function BillingPage() {
   const currentPlanType = subscription?.stripe_plans?.plan_type || 'free';
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: 'hsl(210, 40%, 98%)' }}>
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-xl border-b border-cyan-500/20 shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/dashboard" className="text-blue-600 hover:text-blue-700 font-bold flex items-center gap-2">
-              <ArrowRight className="w-5 h-5 rotate-180" />
-              Back to Dashboard
+      <nav className="shadow-sm sticky top-0 z-50" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid hsl(210, 40%, 96%)' }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="flex justify-between items-center h-18 py-3">
+            <Link to="/dashboard" className="flex items-center">
+              <img src="/cru_logo.png" alt="Credit Repair University" className="h-14 object-contain" />
             </Link>
-            <h1 className="text-2xl font-black text-black">Billing & Subscriptions</h1>
+            <div className="flex items-center space-x-6">
+              <Link to="/dashboard" className="font-medium transition-colors flex items-center gap-2" style={{ color: 'hsl(217, 85%, 31%)' }}>
+                <ArrowLeft className="w-4 h-4" />
+                Back to Dashboard
+              </Link>
+              <button onClick={signOut} className="flex items-center font-medium transition-colors" style={{ color: 'hsl(217, 85%, 31%)' }}>
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign Out
+              </button>
+            </div>
           </div>
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-16 py-12">
         {/* Current Subscription Status */}
         {subscription && (
-          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-cyan-500/30 p-6 mb-8 rounded-2xl">
+          <div className="p-6 mb-8 rounded-xl" style={{ backgroundColor: 'hsl(210, 40%, 96%)', border: '1px solid hsl(210, 40%, 90%)' }}>
             <div className="flex items-start justify-between">
               <div className="flex items-start gap-4">
-                <Shield className="w-8 h-8 text-blue-600 mt-1" />
+                <Shield className="w-8 h-8 mt-1" style={{ color: 'hsl(217, 85%, 31%)' }} />
                 <div>
-                  <h3 className="text-xl font-black text-black mb-2">
+                  <h3 className="text-xl font-bold mb-2" style={{ color: 'hsl(217, 85%, 31%)' }}>
                     Current Plan: {subscription.stripe_plans.plan_type.charAt(0).toUpperCase() + subscription.stripe_plans.plan_type.slice(1)}
                   </h3>
-                  <p className="text-gray-700 font-semibold">
-                    Status: <span className="text-green-600 font-bold">{subscription.status}</span>
+                  <p className="font-semibold" style={{ color: 'hsl(215, 20%, 45%)' }}>
+                    Status: <span className="font-bold" style={{ color: 'hsl(142, 71%, 35%)' }}>{subscription.status}</span>
                   </p>
                   {subscription.trial_end && new Date(subscription.trial_end) > new Date() && (
-                    <p className="text-gray-700 font-semibold mt-1">
+                    <p className="font-semibold mt-1" style={{ color: 'hsl(215, 20%, 45%)' }}>
                       Trial ends: {new Date(subscription.trial_end).toLocaleDateString()}
                     </p>
                   )}
@@ -192,10 +201,10 @@ export default function BillingPage() {
         {/* Subscription Plans */}
         <div className="mb-12">
           <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-black text-black mb-4">
-              Choose Your <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-green-500 bg-clip-text text-transparent">Plan</span>
-            </h2>
-            <p className="text-xl text-gray-700 font-semibold">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'hsl(217, 85%, 31%)' }}>
+              Choose Your <span style={{ color: 'hsl(43, 47%, 50%)' }}>Plan</span>
+            </h1>
+            <p className="text-xl" style={{ color: 'hsl(215, 20%, 45%)' }}>
               Start free, upgrade anytime for full access
             </p>
           </div>
@@ -210,58 +219,60 @@ export default function BillingPage() {
               return (
                 <div
                   key={plan.id}
-                  className={`relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 ${
-                    plan.popular
-                      ? 'border-4 border-yellow-400 shadow-2xl hover:shadow-[0_20px_60px_rgba(59,130,246,0.4)]'
-                      : isEnterprise
-                      ? 'border-4 border-purple-500/50 shadow-2xl hover:shadow-[0_20px_60px_rgba(147,51,234,0.4)]'
-                      : 'border-2 border-cyan-500/40 shadow-lg hover:shadow-xl'
-                  }`}
+                  className="relative rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2"
+                  style={{ 
+                    backgroundColor: '#ffffff',
+                    border: plan.popular 
+                      ? '3px solid hsl(43, 47%, 60%)' 
+                      : isEnterprise 
+                      ? '3px solid hsl(217, 85%, 40%)' 
+                      : '2px solid hsl(210, 40%, 90%)',
+                    boxShadow: plan.popular || isEnterprise ? '0 10px 40px rgba(0,0,0,0.1)' : '0 4px 20px rgba(0,0,0,0.05)'
+                  }}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2 rounded-full text-sm font-black shadow-lg">
+                    <div 
+                      className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-6 py-2 rounded-full text-sm font-bold shadow-md"
+                      style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
+                    >
                       MOST POPULAR
                     </div>
                   )}
                   {isEnterprise && (
-                    <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-full text-sm font-black shadow-lg">
+                    <div 
+                      className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-6 py-2 rounded-full text-sm font-bold shadow-md"
+                      style={{ backgroundColor: 'hsl(217, 85%, 31%)', color: '#ffffff' }}
+                    >
                       BUSINESS LAUNCH
                     </div>
                   )}
 
                   <div className="flex items-center gap-3 mb-6 mt-4">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${
-                      plan.popular 
-                        ? 'bg-gradient-to-br from-blue-600 to-cyan-600' 
-                        : isEnterprise
-                        ? 'bg-gradient-to-br from-purple-600 to-blue-600'
-                        : 'bg-gradient-to-br from-blue-600 to-green-500'
-                    }`}>
-                      <Icon className="w-7 h-7 text-white" />
+                    <div 
+                      className="w-14 h-14 rounded-xl flex items-center justify-center"
+                      style={{ backgroundColor: plan.popular ? 'hsl(43, 47%, 60%)' : isEnterprise ? 'hsl(217, 85%, 31%)' : 'hsl(210, 40%, 96%)' }}
+                    >
+                      <Icon className="w-7 h-7" style={{ color: plan.popular || isEnterprise ? '#ffffff' : 'hsl(217, 85%, 31%)' }} />
                     </div>
-                    <h3 className="text-2xl font-black text-black">{plan.name}</h3>
+                    <h3 className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>{plan.name}</h3>
                   </div>
 
                   <div className="mb-6">
-                    <span className="text-5xl font-black text-black">${plan.price}</span>
-                    <span className="text-gray-600 text-lg font-semibold">/month</span>
+                    <span className="text-5xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>${plan.price}</span>
+                    <span className="text-lg" style={{ color: 'hsl(215, 20%, 55%)' }}>/month</span>
                     {plan.price > 0 && (
-                      <p className="text-sm text-green-600 font-bold mt-2">7-day free trial included</p>
+                      <p className="text-sm font-semibold mt-2" style={{ color: 'hsl(142, 71%, 35%)' }}>7-day free trial included</p>
                     )}
                     {isEnterprise && (
-                      <p className="text-sm text-purple-600 font-bold mt-1">Complete business launch package</p>
+                      <p className="text-sm font-semibold mt-1" style={{ color: 'hsl(217, 85%, 31%)' }}>Complete business launch package</p>
                     )}
                   </div>
 
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <Check className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
-                          isEnterprise && idx > 0 ? 'text-purple-600' : 'text-green-500'
-                        }`} />
-                        <span className={`font-medium ${
-                          isEnterprise && idx > 0 ? 'text-gray-700 font-bold' : 'text-gray-700'
-                        }`}>{feature}</span>
+                        <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: isEnterprise && idx > 0 ? 'hsl(217, 85%, 31%)' : 'hsl(142, 71%, 35%)' }} />
+                        <span className="font-medium" style={{ color: 'hsl(215, 20%, 35%)' }}>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -269,15 +280,15 @@ export default function BillingPage() {
                   <button
                     onClick={() => handleSubscribe(plan.id)}
                     disabled={isCurrentPlan || loading === plan.id}
-                    className={`w-full py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
-                      isCurrentPlan
-                        ? 'bg-gray-200 text-gray-600 cursor-not-allowed'
-                        : plan.popular
-                        ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 shadow-xl hover:shadow-2xl border-4 border-yellow-400'
-                        : isEnterprise
-                        ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 shadow-xl hover:shadow-2xl border-2 border-purple-500'
-                        : 'bg-gradient-to-r from-blue-600 to-green-500 text-white hover:from-blue-700 hover:to-green-600 shadow-lg hover:shadow-xl'
-                    }`}
+                    className="w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={isCurrentPlan 
+                      ? { backgroundColor: 'hsl(210, 40%, 92%)', color: 'hsl(215, 20%, 55%)' }
+                      : plan.popular 
+                      ? { backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }
+                      : isEnterprise
+                      ? { backgroundColor: 'hsl(217, 85%, 31%)', color: '#ffffff' }
+                      : { backgroundColor: 'hsl(210, 40%, 96%)', color: 'hsl(217, 85%, 31%)' }
+                    }
                   >
                     {loading === plan.id ? (
                       'Processing...'
@@ -300,18 +311,18 @@ export default function BillingPage() {
         </div>
 
         {/* Features Comparison */}
-        <div className="bg-gradient-to-b from-cyan-50 to-white rounded-3xl p-8 border-2 border-cyan-500/30">
-          <h3 className="text-3xl font-black text-black mb-6 text-center">
+        <div className="rounded-2xl p-8" style={{ backgroundColor: '#ffffff', border: '1px solid hsl(210, 40%, 90%)' }}>
+          <h3 className="text-2xl font-bold mb-6 text-center" style={{ color: 'hsl(217, 85%, 31%)' }}>
             Feature Comparison
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b-2 border-cyan-500/30">
-                  <th className="text-left py-4 px-4 font-black text-black">Feature</th>
-                  <th className="text-center py-4 px-4 font-black text-black">Free</th>
-                  <th className="text-center py-4 px-4 font-black text-black">Pro</th>
-                  <th className="text-center py-4 px-4 font-black text-black">Enterprise</th>
+                <tr style={{ borderBottom: '2px solid hsl(210, 40%, 90%)' }}>
+                  <th className="text-left py-4 px-4 font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>Feature</th>
+                  <th className="text-center py-4 px-4 font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>Free</th>
+                  <th className="text-center py-4 px-4 font-bold" style={{ color: 'hsl(43, 47%, 50%)' }}>Pro</th>
+                  <th className="text-center py-4 px-4 font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>Enterprise</th>
                 </tr>
               </thead>
               <tbody>
@@ -327,11 +338,11 @@ export default function BillingPage() {
                   { feature: 'Custom Domain Setup', free: 'No', pro: 'No', enterprise: 'Yes' },
                   { feature: 'Multi-User Licenses', free: 'No', pro: 'No', enterprise: 'Yes' },
                 ].map((row, idx) => (
-                  <tr key={idx} className="border-b border-cyan-500/20">
-                    <td className="py-3 px-4 font-bold text-gray-700">{row.feature}</td>
-                    <td className="py-3 px-4 text-center text-gray-600 font-semibold">{row.free}</td>
-                    <td className="py-3 px-4 text-center text-gray-600 font-semibold">{row.pro}</td>
-                    <td className="py-3 px-4 text-center text-gray-600 font-semibold">{row.enterprise}</td>
+                  <tr key={idx} style={{ borderBottom: '1px solid hsl(210, 40%, 94%)' }}>
+                    <td className="py-3 px-4 font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>{row.feature}</td>
+                    <td className="py-3 px-4 text-center" style={{ color: 'hsl(215, 20%, 45%)' }}>{row.free}</td>
+                    <td className="py-3 px-4 text-center" style={{ color: 'hsl(215, 20%, 45%)' }}>{row.pro}</td>
+                    <td className="py-3 px-4 text-center" style={{ color: 'hsl(215, 20%, 45%)' }}>{row.enterprise}</td>
                   </tr>
                 ))}
               </tbody>
@@ -340,10 +351,10 @@ export default function BillingPage() {
         </div>
 
         {/* Money-Back Guarantee */}
-        <div className="mt-12 bg-gradient-to-r from-green-50 to-cyan-50 border-2 border-green-500/30 p-8 rounded-2xl text-center">
-          <Zap className="w-12 h-12 text-green-600 mx-auto mb-4" />
-          <h3 className="text-2xl font-black text-black mb-3">Risk-Free Guarantee</h3>
-          <p className="text-gray-700 font-semibold max-w-2xl mx-auto">
+        <div className="mt-12 p-8 rounded-xl text-center" style={{ backgroundColor: 'hsla(43, 47%, 60%, 0.15)', border: '1px solid hsla(43, 47%, 60%, 0.3)' }}>
+          <Zap className="w-12 h-12 mx-auto mb-4" style={{ color: 'hsl(43, 47%, 50%)' }} />
+          <h3 className="text-2xl font-bold mb-3" style={{ color: 'hsl(217, 85%, 31%)' }}>Risk-Free Guarantee</h3>
+          <p className="max-w-2xl mx-auto" style={{ color: 'hsl(215, 20%, 45%)' }}>
             Try any paid plan risk-free with our 7-day trial. Cancel anytime, no questions asked.
           </p>
         </div>
