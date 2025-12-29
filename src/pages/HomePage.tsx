@@ -19,12 +19,16 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen" style={{ backgroundColor: '#ffffff', color: 'hsl(217, 85%, 31%)' }}>
       {/* Navigation - Clean White Header */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-white'
-        } border-b border-slate-100`}
+          isScrolled ? 'backdrop-blur-md shadow-sm' : ''
+        }`}
+        style={{ 
+          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : '#ffffff',
+          borderBottom: '1px solid hsl(210, 40%, 96%)'
+        }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-16 py-3 flex justify-between items-center">
           {/* Logo */}
@@ -38,18 +42,19 @@ export default function HomePage() {
 
           {/* Nav Links */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#courses" className="text-navy hover:text-gold font-semibold transition-colors duration-200">COURSES</a>
-            <a href="#about" className="text-navy hover:text-gold font-semibold transition-colors duration-200">ABOUT</a>
-            <a href="#pricing" className="text-navy hover:text-gold font-semibold transition-colors duration-200">PRICING</a>
-            <a href="#faq" className="text-navy hover:text-gold font-semibold transition-colors duration-200">FAQ</a>
-            <Link to="/login" className="text-navy hover:text-gold font-semibold transition-colors duration-200">LOGIN</Link>
+            <a href="#courses" className="font-semibold transition-colors duration-200" style={{ color: 'hsl(217, 85%, 31%)' }}>COURSES</a>
+            <a href="#about" className="font-semibold transition-colors duration-200" style={{ color: 'hsl(217, 85%, 31%)' }}>ABOUT</a>
+            <a href="#pricing" className="font-semibold transition-colors duration-200" style={{ color: 'hsl(217, 85%, 31%)' }}>PRICING</a>
+            <a href="#faq" className="font-semibold transition-colors duration-200" style={{ color: 'hsl(217, 85%, 31%)' }}>FAQ</a>
+            <Link to="/login" className="font-semibold transition-colors duration-200" style={{ color: 'hsl(217, 85%, 31%)' }}>LOGIN</Link>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
             <Link
               to="/register"
-              className="px-6 py-2.5 rounded-lg font-semibold text-base bg-gold text-navy hover:bg-gold-hover transition-all duration-300 shadow-md hover:shadow-lg"
+              className="px-6 py-2.5 rounded-lg font-semibold text-base transition-all duration-300 shadow-md hover:shadow-lg"
+              style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
             >
               Start Free Trial
             </Link>
@@ -135,14 +140,14 @@ export default function HomePage() {
       </section>
 
       {/* Features/Value Props - Clean Cards */}
-      <section id="about" className="py-24 bg-slate-50">
+      <section id="about" className="py-24" style={{ backgroundColor: 'hsl(210, 40%, 98%)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="text-center mb-16">
-            <span className="text-gold font-medium tracking-wider uppercase text-sm">WHY CHOOSE US</span>
-            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 mt-2 tracking-tight">
+            <span className="font-medium tracking-wider uppercase text-sm" style={{ color: 'hsl(43, 47%, 60%)' }}>WHY CHOOSE US</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold mb-4 mt-2 tracking-tight" style={{ color: 'hsl(217, 85%, 31%)' }}>
               Why Credit Repair University
             </h2>
-            <p className="text-lg text-slate-600">Premium features that deliver real results</p>
+            <p className="text-lg" style={{ color: 'hsl(215, 20%, 45%)' }}>Premium features that deliver real results</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -172,13 +177,17 @@ export default function HomePage() {
               return (
                 <div
                   key={idx}
-                  className="group bg-white rounded-xl p-8 hover:shadow-lg hover:bg-navy-50 transition-all duration-300 border border-slate-100"
+                  className="group rounded-xl p-8 hover:shadow-lg transition-all duration-300"
+                  style={{ backgroundColor: '#ffffff', border: '1px solid hsl(210, 40%, 96%)' }}
                 >
-                  <div className="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors duration-300 shadow-sm">
-                    <Icon className="w-7 h-7 text-navy group-hover:text-gold transition-colors" />
+                  <div 
+                    className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300 shadow-sm"
+                    style={{ backgroundColor: 'hsl(210, 40%, 96%)' }}
+                  >
+                    <Icon className="w-7 h-7" style={{ color: 'hsl(217, 85%, 31%)' }} />
                   </div>
-                  <h3 className="text-xl font-semibold text-navy mb-3">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-xl font-semibold mb-3" style={{ color: 'hsl(217, 85%, 31%)' }}>{feature.title}</h3>
+                  <p className="leading-relaxed" style={{ color: 'hsl(215, 20%, 45%)' }}>{feature.desc}</p>
                 </div>
               );
             })}
@@ -187,14 +196,14 @@ export default function HomePage() {
       </section>
 
       {/* Categories/Courses Overview */}
-      <section id="courses" className="py-24 bg-white">
+      <section id="courses" className="py-24" style={{ backgroundColor: '#ffffff' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="text-center mb-16">
-            <span className="text-gold font-medium tracking-wider uppercase text-sm">OUR COURSES</span>
-            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 mt-2 tracking-tight">
+            <span className="font-medium tracking-wider uppercase text-sm" style={{ color: 'hsl(43, 47%, 60%)' }}>OUR COURSES</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold mb-4 mt-2 tracking-tight" style={{ color: 'hsl(217, 85%, 31%)' }}>
               12 Learning Paths
             </h2>
-            <p className="text-lg text-slate-600">From fundamentals to advanced strategies</p>
+            <p className="text-lg" style={{ color: 'hsl(215, 20%, 45%)' }}>From fundamentals to advanced strategies</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -216,15 +225,19 @@ export default function HomePage() {
               return (
                 <div
                   key={idx}
-                  className="group bg-white rounded-xl p-5 hover:shadow-md transition-all duration-300 cursor-pointer border border-slate-200 hover:border-gold/50"
+                  className="group rounded-xl p-5 hover:shadow-md transition-all duration-300 cursor-pointer"
+                  style={{ backgroundColor: '#ffffff', border: '1px solid hsl(214, 32%, 91%)' }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-navy rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-gold transition-colors duration-300">
-                      <Icon className="w-6 h-6 text-white group-hover:text-navy" />
+                    <div 
+                      className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300"
+                      style={{ backgroundColor: 'hsl(217, 85%, 31%)' }}
+                    >
+                      <Icon className="w-6 h-6" style={{ color: '#ffffff' }} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-base font-semibold text-navy mb-1 group-hover:text-gold-hover transition-colors">{category.name}</h3>
-                      <p className="text-slate-600 text-sm">{category.courses} courses</p>
+                      <h3 className="text-base font-semibold mb-1 transition-colors" style={{ color: 'hsl(217, 85%, 31%)' }}>{category.name}</h3>
+                      <p className="text-sm" style={{ color: 'hsl(215, 20%, 45%)' }}>{category.courses} courses</p>
                     </div>
                   </div>
                 </div>
@@ -235,7 +248,8 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <Link
               to="/courses"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-navy rounded-lg font-semibold text-lg hover:bg-gold-hover transition-all duration-300 shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-md hover:shadow-lg"
+              style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
             >
               View All Courses
               <ArrowRight className="w-5 h-5" />
@@ -247,12 +261,12 @@ export default function HomePage() {
       {/* Social Proof - Dark Navy Background */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: 'hsl(217, 85%, 15%)' }}>
         {/* Decorative Quote Icon */}
-        <Quote className="absolute top-16 left-1/2 -translate-x-1/2 w-48 h-48 text-white opacity-[0.03]" />
+        <Quote className="absolute top-16 left-1/2 -translate-x-1/2 w-48 h-48 opacity-[0.03]" style={{ color: '#ffffff' }} />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
           <div className="text-center mb-16">
-            <span className="text-gold font-medium tracking-wider uppercase text-sm">TESTIMONIALS</span>
-            <h2 className="text-3xl lg:text-5xl font-semibold text-white mb-4 mt-2 tracking-tight">
+            <span className="font-medium tracking-wider uppercase text-sm" style={{ color: 'hsl(43, 47%, 60%)' }}>TESTIMONIALS</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold mb-4 mt-2 tracking-tight" style={{ color: '#ffffff' }}>
               Real Results from Real People
             </h2>
             <p className="text-lg" style={{ color: 'hsl(213, 27%, 75%)' }}>Join thousands transforming their financial future</p>
@@ -289,19 +303,19 @@ export default function HomePage() {
               >
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.stars)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-gold text-gold" />
+                    <Star key={i} className="w-5 h-5" style={{ color: 'hsl(43, 47%, 60%)', fill: 'hsl(43, 47%, 60%)' }} />
                   ))}
                 </div>
-                <Quote className="w-8 h-8 text-white/20 mb-4" />
+                <Quote className="w-8 h-8 mb-4" style={{ color: 'rgba(255, 255, 255, 0.2)' }} />
                 <p className="mb-6 leading-relaxed italic" style={{ color: 'hsl(214, 32%, 85%)' }}>"{testimonial.quote}"</p>
-                <div className="border-t border-white/10 pt-4">
+                <div className="pt-4" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-semibold text-white">{testimonial.name}</p>
+                      <p className="font-semibold" style={{ color: '#ffffff' }}>{testimonial.name}</p>
                       <p className="text-sm" style={{ color: 'hsl(215, 20%, 70%)' }}>{testimonial.role}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-semibold text-gold text-lg">{testimonial.result}</p>
+                      <p className="font-semibold text-lg" style={{ color: 'hsl(43, 47%, 60%)' }}>{testimonial.result}</p>
                     </div>
                   </div>
                 </div>
@@ -312,142 +326,177 @@ export default function HomePage() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-slate-50">
+      <section id="pricing" className="py-24" style={{ backgroundColor: 'hsl(210, 40%, 98%)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="text-center mb-16">
-            <span className="text-gold font-medium tracking-wider uppercase text-sm">PRICING</span>
-            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 mt-2 tracking-tight">
+            <span className="font-medium tracking-wider uppercase text-sm" style={{ color: 'hsl(43, 47%, 60%)' }}>PRICING</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold mb-4 mt-2 tracking-tight" style={{ color: 'hsl(217, 85%, 31%)' }}>
               Choose Your Plan
             </h2>
-            <p className="text-lg text-slate-600">Start free, upgrade anytime for full access</p>
+            <p className="text-lg" style={{ color: 'hsl(215, 20%, 45%)' }}>Start free, upgrade anytime for full access</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Free Plan */}
-            <div className="bg-white rounded-xl p-8 border border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div 
+              className="rounded-xl p-8 hover:shadow-lg transition-all duration-300"
+              style={{ backgroundColor: '#ffffff', border: '1px solid hsl(214, 32%, 91%)' }}
+            >
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center">
-                  <Sparkles className="w-6 h-6 text-navy" />
+                <div 
+                  className="w-12 h-12 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: 'hsl(210, 40%, 96%)' }}
+                >
+                  <Sparkles className="w-6 h-6" style={{ color: 'hsl(217, 85%, 31%)' }} />
                 </div>
-                <h3 className="text-xl font-semibold text-navy">Free Plan</h3>
+                <h3 className="text-xl font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>Free Plan</h3>
               </div>
               <div className="mb-6">
-                <span className="text-4xl font-semibold text-navy">$0</span>
-                <span className="text-slate-600 text-lg">/month</span>
+                <span className="text-4xl font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>$0</span>
+                <span className="text-lg" style={{ color: 'hsl(215, 20%, 45%)' }}>/month</span>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">Access to 5 courses (limited selection)</span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span style={{ color: 'hsl(215, 20%, 45%)' }}>Access to 5 courses (limited selection)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">Basic progress tracking</span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span style={{ color: 'hsl(215, 20%, 45%)' }}>Basic progress tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">XP and levels system</span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span style={{ color: 'hsl(215, 20%, 45%)' }}>XP and levels system</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">Badge earning</span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span style={{ color: 'hsl(215, 20%, 45%)' }}>Badge earning</span>
                 </li>
               </ul>
               <Link
                 to="/register"
-                className="block w-full py-3 rounded-lg font-semibold text-center border-2 border-navy text-navy hover:bg-navy hover:text-white transition-all duration-300"
+                className="block w-full py-3 rounded-lg font-semibold text-center transition-all duration-300"
+                style={{ 
+                  border: '2px solid hsl(217, 85%, 31%)', 
+                  color: 'hsl(217, 85%, 31%)',
+                  backgroundColor: 'transparent'
+                }}
               >
                 Start Free
               </Link>
             </div>
 
             {/* Pro Plan - Most Popular */}
-            <div className="relative bg-navy rounded-xl p-8 shadow-xl transform scale-105">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold text-navy px-4 py-1.5 rounded-full text-sm font-semibold">
+            <div 
+              className="relative rounded-xl p-8 shadow-xl transform scale-105"
+              style={{ backgroundColor: 'hsl(217, 85%, 31%)' }}
+            >
+              <div 
+                className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1.5 rounded-full text-sm font-semibold"
+                style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
+              >
                 MOST POPULAR
               </div>
               <div className="flex items-center gap-3 mb-6 mt-2">
-                <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                  <Crown className="w-6 h-6 text-gold" />
+                <div 
+                  className="w-12 h-12 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+                >
+                  <Crown className="w-6 h-6" style={{ color: 'hsl(43, 47%, 60%)' }} />
                 </div>
-                <h3 className="text-xl font-semibold text-white">Pro Plan</h3>
+                <h3 className="text-xl font-semibold" style={{ color: '#ffffff' }}>Pro Plan</h3>
               </div>
               <div className="mb-6">
-                <span className="text-4xl font-semibold text-white">$29</span>
+                <span className="text-4xl font-semibold" style={{ color: '#ffffff' }}>$29</span>
                 <span className="text-lg" style={{ color: 'hsl(213, 27%, 75%)' }}>/month</span>
-                <p className="text-sm text-gold font-semibold mt-2">7-day free trial included</p>
+                <p className="text-sm font-semibold mt-2" style={{ color: 'hsl(43, 47%, 60%)' }}>7-day free trial included</p>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
                   <span style={{ color: 'hsl(214, 32%, 85%)' }}>All 87 courses (complete curriculum)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
                   <span style={{ color: 'hsl(214, 32%, 85%)' }}>All 97 quizzes</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
                   <span style={{ color: 'hsl(214, 32%, 85%)' }}>Certificates upon completion</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
                   <span style={{ color: 'hsl(214, 32%, 85%)' }}>Full progress tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
                   <span style={{ color: 'hsl(214, 32%, 85%)' }}>Priority support</span>
                 </li>
               </ul>
               <Link
                 to="/billing"
-                className="block w-full py-3 rounded-lg font-semibold text-center bg-gold text-navy hover:bg-gold-hover transition-all duration-300"
+                className="block w-full py-3 rounded-lg font-semibold text-center transition-all duration-300"
+                style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
               >
                 Start Pro Trial
               </Link>
             </div>
 
             {/* Enterprise Plan */}
-            <div className="relative bg-white rounded-xl p-8 border border-slate-200 hover:shadow-lg transition-all duration-300">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-navy text-white px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap">
+            <div 
+              className="relative rounded-xl p-8 hover:shadow-lg transition-all duration-300"
+              style={{ backgroundColor: '#ffffff', border: '1px solid hsl(214, 32%, 91%)' }}
+            >
+              <div 
+                className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap"
+                style={{ backgroundColor: 'hsl(217, 85%, 31%)', color: '#ffffff' }}
+              >
                 BUSINESS LAUNCH
               </div>
               <div className="flex items-center gap-3 mb-6 mt-2">
-                <div className="w-12 h-12 bg-navy/10 rounded-lg flex items-center justify-center">
-                  <Building2 className="w-6 h-6 text-navy" />
+                <div 
+                  className="w-12 h-12 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: 'hsla(217, 85%, 31%, 0.1)' }}
+                >
+                  <Building2 className="w-6 h-6" style={{ color: 'hsl(217, 85%, 31%)' }} />
                 </div>
-                <h3 className="text-xl font-semibold text-navy">Enterprise</h3>
+                <h3 className="text-xl font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>Enterprise</h3>
               </div>
               <div className="mb-6">
-                <span className="text-4xl font-semibold text-navy">$250</span>
-                <span className="text-slate-600 text-lg">/month</span>
-                <p className="text-sm text-gold font-semibold mt-2">7-day free trial included</p>
+                <span className="text-4xl font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>$250</span>
+                <span className="text-lg" style={{ color: 'hsl(215, 20%, 45%)' }}>/month</span>
+                <p className="text-sm font-semibold mt-2" style={{ color: 'hsl(43, 47%, 60%)' }}>7-day free trial included</p>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">Everything in Pro</span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span style={{ color: 'hsl(215, 20%, 45%)' }}>Everything in Pro</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600 font-semibold">White-labeled credit repair software</span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span className="font-semibold" style={{ color: 'hsl(215, 20%, 45%)' }}>White-labeled credit repair software</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600 font-semibold">Complete business training program</span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span className="font-semibold" style={{ color: 'hsl(215, 20%, 45%)' }}>Complete business training program</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600 font-semibold">1-on-1 business launch support</span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span className="font-semibold" style={{ color: 'hsl(215, 20%, 45%)' }}>1-on-1 business launch support</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">Weekly coaching calls (3 months)</span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span style={{ color: 'hsl(215, 20%, 45%)' }}>Weekly coaching calls (3 months)</span>
                 </li>
               </ul>
               <Link
                 to="/billing"
-                className="block w-full py-3 rounded-lg font-semibold text-center border-2 border-navy text-navy hover:bg-navy hover:text-white transition-all duration-300"
+                className="block w-full py-3 rounded-lg font-semibold text-center transition-all duration-300"
+                style={{ 
+                  border: '2px solid hsl(217, 85%, 31%)', 
+                  color: 'hsl(217, 85%, 31%)',
+                  backgroundColor: 'transparent'
+                }}
               >
                 Start Business Launch Program
               </Link>
@@ -464,9 +513,13 @@ export default function HomePage() {
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="flex items-center gap-3 bg-white rounded-lg p-4 border border-slate-200">
-                  <Icon className="w-5 h-5 text-gold flex-shrink-0" />
-                  <span className="text-slate-600 text-sm font-medium">{item.text}</span>
+                <div 
+                  key={idx} 
+                  className="flex items-center gap-3 rounded-lg p-4"
+                  style={{ backgroundColor: '#ffffff', border: '1px solid hsl(214, 32%, 91%)' }}
+                >
+                  <Icon className="w-5 h-5 flex-shrink-0" style={{ color: 'hsl(43, 47%, 60%)' }} />
+                  <span className="text-sm font-medium" style={{ color: 'hsl(215, 20%, 45%)' }}>{item.text}</span>
                 </div>
               );
             })}
@@ -475,14 +528,14 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Accordion */}
-      <section id="faq" className="py-24 bg-white">
+      <section id="faq" className="py-24" style={{ backgroundColor: '#ffffff' }}>
         <div className="max-w-4xl mx-auto px-6 lg:px-16">
           <div className="text-center mb-16">
-            <span className="text-gold font-medium tracking-wider uppercase text-sm">FAQ</span>
-            <h2 className="text-3xl lg:text-5xl font-semibold text-navy mb-4 mt-2 tracking-tight">
+            <span className="font-medium tracking-wider uppercase text-sm" style={{ color: 'hsl(43, 47%, 60%)' }}>FAQ</span>
+            <h2 className="text-3xl lg:text-5xl font-semibold mb-4 mt-2 tracking-tight" style={{ color: 'hsl(217, 85%, 31%)' }}>
               Frequently Asked Questions
             </h2>
-            <p className="text-lg text-slate-600">Everything you need to know</p>
+            <p className="text-lg" style={{ color: 'hsl(215, 20%, 45%)' }}>Everything you need to know</p>
           </div>
 
           <div className="space-y-3">
@@ -518,18 +571,21 @@ export default function HomePage() {
             ].map((faq, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-lg overflow-hidden border border-slate-200 hover:border-slate-300 transition-colors duration-200"
+                className="rounded-lg overflow-hidden transition-colors duration-200"
+                style={{ backgroundColor: '#ffffff', border: '1px solid hsl(214, 32%, 91%)' }}
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full flex justify-between items-center p-5 text-left hover:bg-slate-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center p-5 text-left transition-colors duration-200"
+                  style={{ backgroundColor: openFaqIndex === idx ? 'hsl(210, 40%, 98%)' : 'transparent' }}
                   aria-expanded={openFaqIndex === idx}
                 >
-                  <span className="font-semibold text-navy pr-8">{faq.question}</span>
+                  <span className="font-semibold pr-8" style={{ color: 'hsl(217, 85%, 31%)' }}>{faq.question}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-gold flex-shrink-0 transition-transform duration-300 ${
+                    className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${
                       openFaqIndex === idx ? 'rotate-180' : ''
                     }`}
+                    style={{ color: 'hsl(43, 47%, 60%)' }}
                   />
                 </button>
                 <div
@@ -537,7 +593,7 @@ export default function HomePage() {
                     openFaqIndex === idx ? 'max-h-48' : 'max-h-0'
                   }`}
                 >
-                  <p className="px-5 pb-5 text-slate-600 leading-relaxed">{faq.answer}</p>
+                  <p className="px-5 pb-5 leading-relaxed" style={{ color: 'hsl(215, 20%, 45%)' }}>{faq.answer}</p>
                 </div>
               </div>
             ))}
@@ -546,28 +602,29 @@ export default function HomePage() {
       </section>
 
       {/* CTA Band - Gold Background */}
-      <section className="py-20 bg-gold">
+      <section className="py-20" style={{ backgroundColor: 'hsl(43, 47%, 60%)' }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-16 text-center">
-          <h2 className="text-3xl lg:text-4xl font-semibold text-navy mb-6 tracking-tight">
+          <h2 className="text-3xl lg:text-4xl font-semibold mb-6 tracking-tight" style={{ color: 'hsl(217, 85%, 15%)' }}>
             Ready to Transform Your Credit Score?
           </h2>
-          <p className="text-lg text-navy/80 mb-10 leading-relaxed">
+          <p className="text-lg mb-10 leading-relaxed" style={{ color: 'hsla(217, 85%, 15%, 0.8)' }}>
             Start with 5 free courses. No credit card required.
           </p>
 
           <Link
             to="/register"
-            className="inline-flex items-center gap-3 px-10 py-4 rounded-lg font-semibold text-lg bg-navy text-white hover:bg-navy-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-3 px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+            style={{ backgroundColor: 'hsl(217, 85%, 15%)', color: '#ffffff' }}
           >
             Start Free Trial
             <ArrowRight className="w-5 h-5" />
           </Link>
-          <p className="mt-6 text-navy/70 text-sm">Upgrade anytime. Cancel anytime. No risk.</p>
+          <p className="mt-6 text-sm" style={{ color: 'hsla(217, 85%, 15%, 0.7)' }}>Upgrade anytime. Cancel anytime. No risk.</p>
         </div>
       </section>
 
       {/* Footer - Dark Navy */}
-      <footer className="py-16 bg-navy-900">
+      <footer className="py-16" style={{ backgroundColor: 'hsl(217, 85%, 15%)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             {/* Logo & Tagline */}
@@ -580,29 +637,29 @@ export default function HomePage() {
 
             {/* Quick Links */}
             <div>
-              <h3 className="font-semibold text-white mb-4">Quick Links</h3>
+              <h3 className="font-semibold mb-4" style={{ color: '#ffffff' }}>Quick Links</h3>
               <div className="space-y-2">
-                <Link to="/courses" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>All Courses</Link>
-                <a href="#about" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>About</a>
-                <a href="#pricing" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Pricing</a>
-                <a href="#faq" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>FAQ</a>
+                <Link to="/courses" className="block hover:opacity-80 transition-opacity text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>All Courses</Link>
+                <a href="#about" className="block hover:opacity-80 transition-opacity text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>About</a>
+                <a href="#pricing" className="block hover:opacity-80 transition-opacity text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Pricing</a>
+                <a href="#faq" className="block hover:opacity-80 transition-opacity text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>FAQ</a>
               </div>
             </div>
 
             {/* Account Links */}
             <div>
-              <h3 className="font-semibold text-white mb-4">Get Started</h3>
+              <h3 className="font-semibold mb-4" style={{ color: '#ffffff' }}>Get Started</h3>
               <div className="space-y-2">
-                <Link to="/login" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Login</Link>
-                <Link to="/register" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Sign Up Free</Link>
-                <a href="#" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Privacy Policy</a>
-                <a href="#" className="block hover:text-gold transition-colors text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Terms of Service</a>
+                <Link to="/login" className="block hover:opacity-80 transition-opacity text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Login</Link>
+                <Link to="/register" className="block hover:opacity-80 transition-opacity text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Sign Up Free</Link>
+                <a href="#" className="block hover:opacity-80 transition-opacity text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Privacy Policy</a>
+                <a href="#" className="block hover:opacity-80 transition-opacity text-sm" style={{ color: 'hsl(213, 27%, 75%)' }}>Terms of Service</a>
               </div>
             </div>
           </div>
 
           {/* Bottom */}
-          <div className="border-t border-white/10 pt-8">
+          <div className="pt-8" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
             <p className="text-center text-sm" style={{ color: 'hsl(215, 20%, 70%)' }}>
               &copy; 2025 Credit Repair University. Professional Credit Repair Education.
             </p>
