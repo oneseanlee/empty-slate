@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/contexts/AuthContext';
-import { Users, BookOpen, DollarSign, TrendingUp } from 'lucide-react';
+import { Users, BookOpen, DollarSign, TrendingUp, LogOut } from 'lucide-react';
 
 export default function AdminDashboardPage() {
   const { signOut, userProfile } = useAuth();
@@ -40,18 +40,21 @@ export default function AdminDashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen" style={{ backgroundColor: 'hsl(210, 40%, 98%)' }}>
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
+      <nav className="shadow-sm sticky top-0 z-50" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid hsl(210, 40%, 96%)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
-          <div className="flex justify-between items-center h-18">
+          <div className="flex justify-between items-center h-18 py-3">
             <Link to="/admin" className="flex items-center">
-              <span className="text-2xl font-bold text-primary-900">Credit Repair University Admin</span>
+              <img src="/cru_logo.png" alt="Credit Repair University" className="h-14 object-contain" />
             </Link>
             <div className="flex items-center space-x-6">
-              <Link to="/dashboard" className="text-neutral-700 hover:text-primary-700 font-medium">Dashboard</Link>
-              <Link to="/courses" className="text-neutral-700 hover:text-primary-700 font-medium">Courses</Link>
-              <button onClick={signOut} className="text-neutral-700 hover:text-primary-700 font-medium">Sign Out</button>
+              <Link to="/dashboard" className="font-medium transition-colors" style={{ color: 'hsl(217, 85%, 31%)' }}>Dashboard</Link>
+              <Link to="/courses" className="font-medium transition-colors" style={{ color: 'hsl(217, 85%, 31%)' }}>Courses</Link>
+              <button onClick={signOut} className="flex items-center font-medium transition-colors" style={{ color: 'hsl(217, 85%, 31%)' }}>
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign Out
+              </button>
             </div>
           </div>
         </div>
@@ -59,92 +62,95 @@ export default function AdminDashboardPage() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-16 py-12">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-neutral-900 mb-2">Reseller Dashboard</h1>
-          <p className="text-xl text-neutral-700">Manage your organization and users</p>
+          <h1 className="text-4xl font-bold mb-2" style={{ color: 'hsl(217, 85%, 31%)' }}>Reseller Dashboard</h1>
+          <p className="text-xl" style={{ color: 'hsl(215, 20%, 45%)' }}>Manage your organization and users</p>
         </div>
 
         {/* Stats Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <div className="bg-white p-6 rounded-lg shadow-card">
+          <div className="p-6 rounded-lg shadow-md" style={{ backgroundColor: '#ffffff' }}>
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-primary-700" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'hsl(210, 40%, 96%)' }}>
+                <Users className="w-6 h-6" style={{ color: 'hsl(217, 85%, 31%)' }} />
               </div>
-              <span className="text-2xl font-bold text-neutral-900">{stats.totalUsers}</span>
+              <span className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>{stats.totalUsers}</span>
             </div>
-            <p className="text-neutral-700 font-medium">Total Users</p>
-            <p className="text-neutral-500 text-sm">Active learners</p>
+            <p className="font-medium" style={{ color: 'hsl(217, 85%, 31%)' }}>Total Users</p>
+            <p className="text-sm" style={{ color: 'hsl(215, 20%, 55%)' }}>Active learners</p>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-card">
+          <div className="p-6 rounded-lg shadow-md" style={{ backgroundColor: '#ffffff' }}>
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-success-50 rounded-lg flex items-center justify-center">
-                <DollarSign className="w-6 h-6 text-success-700" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'hsla(43, 47%, 60%, 0.2)' }}>
+                <DollarSign className="w-6 h-6" style={{ color: 'hsl(43, 47%, 50%)' }} />
               </div>
-              <span className="text-2xl font-bold text-neutral-900">${stats.totalRevenue}</span>
+              <span className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>${stats.totalRevenue}</span>
             </div>
-            <p className="text-neutral-700 font-medium">Revenue</p>
-            <p className="text-neutral-500 text-sm">This month</p>
+            <p className="font-medium" style={{ color: 'hsl(217, 85%, 31%)' }}>Revenue</p>
+            <p className="text-sm" style={{ color: 'hsl(215, 20%, 55%)' }}>This month</p>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-card">
+          <div className="p-6 rounded-lg shadow-md" style={{ backgroundColor: '#ffffff' }}>
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-primary-700" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'hsl(210, 40%, 96%)' }}>
+                <BookOpen className="w-6 h-6" style={{ color: 'hsl(217, 85%, 31%)' }} />
               </div>
-              <span className="text-2xl font-bold text-neutral-900">{stats.activeSubs}</span>
+              <span className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>{stats.activeSubs}</span>
             </div>
-            <p className="text-neutral-700 font-medium">Active Subscriptions</p>
-            <p className="text-neutral-500 text-sm">Current period</p>
+            <p className="font-medium" style={{ color: 'hsl(217, 85%, 31%)' }}>Active Subscriptions</p>
+            <p className="text-sm" style={{ color: 'hsl(215, 20%, 55%)' }}>Current period</p>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-card">
+          <div className="p-6 rounded-lg shadow-md" style={{ backgroundColor: '#ffffff' }}>
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-success-50 rounded-lg flex items-center justify-center">
-                <TrendingUp className="w-6 h-6 text-success-700" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'hsla(43, 47%, 60%, 0.2)' }}>
+                <TrendingUp className="w-6 h-6" style={{ color: 'hsl(43, 47%, 50%)' }} />
               </div>
-              <span className="text-2xl font-bold text-neutral-900">{stats.completionRate}%</span>
+              <span className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>{stats.completionRate}%</span>
             </div>
-            <p className="text-neutral-700 font-medium">Avg Completion</p>
-            <p className="text-neutral-500 text-sm">Course completion rate</p>
+            <p className="font-medium" style={{ color: 'hsl(217, 85%, 31%)' }}>Avg Completion</p>
+            <p className="text-sm" style={{ color: 'hsl(215, 20%, 55%)' }}>Course completion rate</p>
           </div>
         </div>
 
         {/* Users Table */}
-        <div className="bg-white rounded-lg shadow-card p-8">
-          <h2 className="text-2xl font-bold text-neutral-900 mb-6">Recent Users</h2>
+        <div className="rounded-lg shadow-md p-8" style={{ backgroundColor: '#ffffff' }}>
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'hsl(217, 85%, 31%)' }}>Recent Users</h2>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-neutral-200">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-neutral-700">Name</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-neutral-700">Email</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-neutral-700">Role</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-neutral-700">Status</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-neutral-700">Joined</th>
+                <tr style={{ borderBottom: '2px solid hsl(210, 40%, 92%)' }}>
+                  <th className="text-left py-3 px-4 text-sm font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>Name</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>Email</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>Role</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>Status</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold" style={{ color: 'hsl(217, 85%, 31%)' }}>Joined</th>
                 </tr>
               </thead>
               <tbody>
                 {users.slice(0, 10).map((user) => (
-                  <tr key={user.id} className="border-b border-neutral-100 hover:bg-neutral-50">
-                    <td className="py-3 px-4 text-sm text-neutral-900">
+                  <tr key={user.id} style={{ borderBottom: '1px solid hsl(210, 40%, 96%)' }}>
+                    <td className="py-3 px-4 text-sm" style={{ color: 'hsl(217, 85%, 31%)' }}>
                       {user.profile_data?.full_name || 'N/A'}
                     </td>
-                    <td className="py-3 px-4 text-sm text-neutral-700">{user.email}</td>
+                    <td className="py-3 px-4 text-sm" style={{ color: 'hsl(215, 20%, 45%)' }}>{user.email}</td>
                     <td className="py-3 px-4 text-sm">
-                      <span className="px-2 py-1 bg-primary-50 text-primary-700 rounded text-xs font-medium capitalize">
+                      <span className="px-2 py-1 rounded text-xs font-medium capitalize" style={{ backgroundColor: 'hsl(210, 40%, 96%)', color: 'hsl(217, 85%, 31%)' }}>
                         {user.role}
                       </span>
                     </td>
                     <td className="py-3 px-4 text-sm">
-                      <span className={`px-2 py-1 rounded text-xs font-medium ${user.is_active
-                          ? 'bg-success-50 text-success-700'
-                          : 'bg-neutral-100 text-neutral-600'
-                        }`}>
+                      <span 
+                        className="px-2 py-1 rounded text-xs font-medium"
+                        style={user.is_active 
+                          ? { backgroundColor: 'hsla(43, 47%, 60%, 0.2)', color: 'hsl(43, 47%, 45%)' }
+                          : { backgroundColor: 'hsl(210, 40%, 96%)', color: 'hsl(215, 20%, 55%)' }
+                        }
+                      >
                         {user.is_active ? 'Active' : 'Inactive'}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-sm text-neutral-600">
+                    <td className="py-3 px-4 text-sm" style={{ color: 'hsl(215, 20%, 55%)' }}>
                       {new Date(user.created_at).toLocaleDateString()}
                     </td>
                   </tr>

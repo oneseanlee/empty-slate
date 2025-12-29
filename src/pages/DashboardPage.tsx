@@ -50,18 +50,18 @@ export default function DashboardPage() {
   const progressPercentage = (stats.completedLessons / stats.totalCourses) * 100;
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen" style={{ backgroundColor: 'hsl(210, 40%, 98%)' }}>
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
+      <nav className="shadow-sm sticky top-0 z-50" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid hsl(210, 40%, 96%)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
-          <div className="flex justify-between items-center h-18">
+          <div className="flex justify-between items-center h-18 py-3">
             <Link to="/dashboard" className="flex items-center">
-              <span className="text-2xl font-bold text-primary-900">Credit Repair University</span>
+              <img src="/cru_logo.png" alt="Credit Repair University" className="h-14 object-contain" />
             </Link>
             <div className="flex items-center space-x-6">
-              <Link to="/courses" className="text-neutral-700 hover:text-primary-700 font-medium">Courses</Link>
-              <Link to="/certificates" className="text-neutral-700 hover:text-primary-700 font-medium">Certificates</Link>
-              <button onClick={signOut} className="flex items-center text-neutral-700 hover:text-primary-700 font-medium">
+              <Link to="/courses" className="font-medium transition-colors" style={{ color: 'hsl(217, 85%, 31%)' }}>Courses</Link>
+              <Link to="/certificates" className="font-medium transition-colors" style={{ color: 'hsl(217, 85%, 31%)' }}>Certificates</Link>
+              <button onClick={signOut} className="flex items-center font-medium transition-colors" style={{ color: 'hsl(217, 85%, 31%)' }}>
                 <LogOut className="w-4 h-4 mr-2" />
                 Sign Out
               </button>
@@ -73,73 +73,71 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto px-6 lg:px-16 py-12">
         {/* Welcome Section */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-neutral-900 mb-2">
+          <h1 className="text-4xl font-bold mb-2" style={{ color: 'hsl(217, 85%, 31%)' }}>
             Welcome back, {userProfile?.profile_data?.full_name || 'Learner'}!
           </h1>
-          <p className="text-xl text-neutral-700">Continue your credit repair journey</p>
+          <p className="text-xl" style={{ color: 'hsl(215, 20%, 45%)' }}>Continue your credit repair journey</p>
         </div>
 
         {/* Stats Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <div className="bg-white p-6 rounded-lg shadow-card">
+          <div className="p-6 rounded-lg shadow-md" style={{ backgroundColor: '#ffffff' }}>
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-primary-700" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'hsl(210, 40%, 96%)' }}>
+                <BookOpen className="w-6 h-6" style={{ color: 'hsl(217, 85%, 31%)' }} />
               </div>
-              <span className="text-2xl font-bold text-neutral-900">{stats.completedLessons}</span>
+              <span className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>{stats.completedLessons}</span>
             </div>
-            <p className="text-neutral-700 font-medium">Lessons Completed</p>
-            <p className="text-neutral-500 text-sm">of {stats.totalCourses} total</p>
+            <p className="font-medium" style={{ color: 'hsl(217, 85%, 31%)' }}>Lessons Completed</p>
+            <p className="text-sm" style={{ color: 'hsl(215, 20%, 55%)' }}>of {stats.totalCourses} total</p>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-card">
+          <div className="p-6 rounded-lg shadow-md" style={{ backgroundColor: '#ffffff' }}>
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-success-50 rounded-lg flex items-center justify-center">
-                <TrendingUp className="w-6 h-6 text-success-700" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'hsla(43, 47%, 60%, 0.2)' }}>
+                <TrendingUp className="w-6 h-6" style={{ color: 'hsl(43, 47%, 50%)' }} />
               </div>
-              <span className="text-2xl font-bold text-neutral-900">{stats.totalXP}</span>
+              <span className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>{stats.totalXP}</span>
             </div>
-            <p className="text-neutral-700 font-medium">Total XP</p>
-            <p className="text-neutral-500 text-sm">Level {stats.level}</p>
+            <p className="font-medium" style={{ color: 'hsl(217, 85%, 31%)' }}>Total XP</p>
+            <p className="text-sm" style={{ color: 'hsl(215, 20%, 55%)' }}>Level {stats.level}</p>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-card">
+          <div className="p-6 rounded-lg shadow-md" style={{ backgroundColor: '#ffffff' }}>
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center">
-                <Target className="w-6 h-6 text-primary-700" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'hsl(210, 40%, 96%)' }}>
+                <Target className="w-6 h-6" style={{ color: 'hsl(217, 85%, 31%)' }} />
               </div>
-              <span className="text-2xl font-bold text-neutral-900">{stats.currentStreak}</span>
+              <span className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>{stats.currentStreak}</span>
             </div>
-            <p className="text-neutral-700 font-medium">Day Streak</p>
-            <p className="text-neutral-500 text-sm">Keep it going!</p>
+            <p className="font-medium" style={{ color: 'hsl(217, 85%, 31%)' }}>Day Streak</p>
+            <p className="text-sm" style={{ color: 'hsl(215, 20%, 55%)' }}>Keep it going!</p>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-card">
+          <div className="p-6 rounded-lg shadow-md" style={{ backgroundColor: '#ffffff' }}>
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-success-50 rounded-lg flex items-center justify-center">
-                <Award className="w-6 h-6 text-success-700" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'hsla(43, 47%, 60%, 0.2)' }}>
+                <Award className="w-6 h-6" style={{ color: 'hsl(43, 47%, 50%)' }} />
               </div>
-              <span className="text-2xl font-bold text-neutral-900">{stats.badges}</span>
+              <span className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>{stats.badges}</span>
             </div>
-            <p className="text-neutral-700 font-medium">Badges Earned</p>
-            <p className="text-neutral-500 text-sm">22 available</p>
+            <p className="font-medium" style={{ color: 'hsl(217, 85%, 31%)' }}>Badges Earned</p>
+            <p className="text-sm" style={{ color: 'hsl(215, 20%, 55%)' }}>22 available</p>
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="bg-white p-8 rounded-lg shadow-card mb-12">
+        <div className="p-8 rounded-lg shadow-md mb-12" style={{ backgroundColor: '#ffffff' }}>
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-neutral-900">Overall Progress</h2>
-            <span className="text-lg font-semibold text-primary-700">{progressPercentage.toFixed(1)}%</span>
+            <h2 className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>Overall Progress</h2>
+            <span className="text-lg font-semibold" style={{ color: 'hsl(43, 47%, 50%)' }}>{progressPercentage.toFixed(1)}%</span>
           </div>
-          <div className="w-full bg-neutral-200 rounded-full h-4">
+          <div className="w-full rounded-full h-4" style={{ backgroundColor: 'hsl(210, 40%, 92%)' }}>
             <div
               className="h-4 rounded-full transition-all duration-500"
               style={{
                 width: `${progressPercentage}%`,
-                background: progressPercentage === 100
-                  ? '#15803d'
-                  : 'linear-gradient(to right, #3b82f6, #22c55e)'
+                background: 'linear-gradient(to right, hsl(217, 85%, 31%), hsl(43, 47%, 60%))'
               }}
             />
           </div>
@@ -148,8 +146,8 @@ export default function DashboardPage() {
         {/* Course Grid */}
         <div>
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-neutral-900">Continue Learning</h2>
-            <Link to="/courses" className="text-primary-700 font-semibold hover:text-primary-900">
+            <h2 className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>Continue Learning</h2>
+            <Link to="/courses" className="font-semibold hover:underline" style={{ color: 'hsl(43, 47%, 50%)' }}>
               View All Courses
             </Link>
           </div>
@@ -159,18 +157,19 @@ export default function DashboardPage() {
               <Link
                 key={course.id}
                 to={`/courses`}
-                className="bg-white p-6 rounded-lg shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1"
+                className="p-6 rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-1"
+                style={{ backgroundColor: '#ffffff' }}
               >
                 <div className="mb-3">
-                  <span className="text-xs font-semibold text-primary-700 uppercase tracking-wide">
+                  <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: 'hsl(43, 47%, 50%)' }}>
                     {course.categories?.name}
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-2">{course.title}</h3>
-                <p className="text-neutral-700 text-sm mb-4 line-clamp-2">{course.description}</p>
+                <h3 className="text-lg font-semibold mb-2" style={{ color: 'hsl(217, 85%, 31%)' }}>{course.title}</h3>
+                <p className="text-sm mb-4 line-clamp-2" style={{ color: 'hsl(215, 20%, 45%)' }}>{course.description}</p>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-neutral-500">{course.duration_minutes} min</span>
-                  <span className="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-xs font-medium">
+                  <span style={{ color: 'hsl(215, 20%, 55%)' }}>{course.duration_minutes} min</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: 'hsl(210, 40%, 96%)', color: 'hsl(217, 85%, 31%)' }}>
                     {course.difficulty_level}
                   </span>
                 </div>

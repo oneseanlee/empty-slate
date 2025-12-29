@@ -1,9 +1,10 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/contexts/AuthContext';
-import { CheckCircle, ChevronLeft, ChevronRight, Award, TrendingUp } from 'lucide-react';
+import { CheckCircle, ChevronLeft, Award, TrendingUp } from 'lucide-react';
 import DOMPurify from 'dompurify';
+
 export default function LessonPlayerPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
@@ -56,7 +57,6 @@ export default function LessonPlayerPage() {
     setLesson(resolvedLesson);
     setActiveLessonId(resolvedLesson?.id ?? null);
 
-    // Load quiz if available
     if (resolvedLesson?.id) {
       const { data: quizData } = await supabase
         .from('quizzes')
@@ -70,7 +70,6 @@ export default function LessonPlayerPage() {
       setQuiz(null);
     }
     
-    // Check if lesson is already completed
     if (user && resolvedLesson?.id) {
       const { data: progress } = await supabase
         .from('user_progress')
@@ -101,12 +100,10 @@ export default function LessonPlayerPage() {
 
       setCompleted(true);
       
-      // Show success message with XP earned
       if (data?.data?.xpAwarded) {
         alert(`Lesson completed! You earned ${data.data.xpAwarded} XP!`);
       }
 
-      // Check for new badges
       await supabase.functions.invoke('check-badges');
     } catch (error: any) {
       console.error('Error completing lesson:', error);
@@ -137,18 +134,23 @@ export default function LessonPlayerPage() {
   };
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'hsl(210, 40%, 98%)' }}>
+        <p style={{ color: 'hsl(215, 20%, 45%)' }}>Loading...</p>
+      </div>
+    );
   }
 
   if (!lesson) {
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center px-6">
-        <div className="bg-white rounded-xl shadow-card p-8 max-w-lg w-full text-center">
-          <h1 className="text-2xl font-bold text-neutral-900 mb-3">Lesson not found</h1>
-          <p className="text-neutral-600 mb-6">We couldn’t load this lesson. Try returning to the catalog.</p>
+      <div className="min-h-screen flex items-center justify-center px-6" style={{ backgroundColor: 'hsl(210, 40%, 98%)' }}>
+        <div className="rounded-xl shadow-lg p-8 max-w-lg w-full text-center" style={{ backgroundColor: '#ffffff' }}>
+          <h1 className="text-2xl font-bold mb-3" style={{ color: 'hsl(217, 85%, 31%)' }}>Lesson not found</h1>
+          <p className="mb-6" style={{ color: 'hsl(215, 20%, 45%)' }}>We couldn't load this lesson. Try returning to the catalog.</p>
           <button
             onClick={() => navigate('/courses')}
-            className="px-6 py-3 bg-primary-700 text-white rounded-lg font-semibold hover:bg-primary-900 transition-all"
+            className="px-6 py-3 rounded-lg font-semibold transition-all"
+            style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
           >
             Back to Catalog
           </button>
@@ -158,25 +160,26 @@ export default function LessonPlayerPage() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen" style={{ backgroundColor: 'hsl(210, 40%, 98%)' }}>
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
+      <nav className="shadow-sm" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid hsl(210, 40%, 96%)' }}>
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <Link to="/courses" className="text-primary-700 hover:text-primary-900 font-medium">
+          <Link to="/courses" className="font-medium flex items-center gap-2" style={{ color: 'hsl(217, 85%, 31%)' }}>
+            <ChevronLeft className="w-5 h-5" />
             Back to Courses
           </Link>
         </div>
       </nav>
 
       <div className="max-w-5xl mx-auto px-6 py-12">
-        <div className="bg-white rounded-xl shadow-card p-8 mb-6">
+        <div className="rounded-xl shadow-lg p-8 mb-6" style={{ backgroundColor: '#ffffff' }}>
           <div className="mb-6">
-            <span className="text-sm font-semibold text-primary-700 uppercase tracking-wide">
+            <span className="text-sm font-semibold uppercase tracking-wide" style={{ color: 'hsl(43, 47%, 50%)' }}>
               {lesson?.courses?.categories?.name}
             </span>
-            <h1 className="text-3xl font-bold text-neutral-900 mt-2">{lesson?.title}</h1>
+            <h1 className="text-3xl font-bold mt-2" style={{ color: 'hsl(217, 85%, 31%)' }}>{lesson?.title}</h1>
             {completed && (
-              <div className="mt-2 inline-flex items-center px-3 py-1 bg-success-100 text-success-800 rounded-full text-sm font-medium">
+              <div className="mt-2 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: 'hsla(43, 47%, 60%, 0.2)', color: 'hsl(43, 47%, 45%)' }}>
                 <CheckCircle className="w-4 h-4 mr-1" />
                 Completed
               </div>
@@ -184,38 +187,40 @@ export default function LessonPlayerPage() {
           </div>
 
           {/* Video Player Placeholder */}
-          <div className="bg-neutral-900 rounded-lg aspect-video mb-8 flex items-center justify-center">
-            <div className="text-center text-white">
+          <div className="rounded-lg aspect-video mb-8 flex items-center justify-center" style={{ backgroundColor: 'hsl(217, 85%, 15%)' }}>
+            <div className="text-center" style={{ color: '#ffffff' }}>
               <p className="text-lg mb-2">Video Player</p>
-              <p className="text-sm text-neutral-400">Duration: {lesson?.duration_minutes} minutes</p>
+              <p className="text-sm" style={{ color: 'hsl(210, 40%, 70%)' }}>Duration: {lesson?.duration_minutes} minutes</p>
             </div>
           </div>
 
           {/* Lesson Content */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-neutral-900 mb-4">Lesson Content</h2>
+            <h2 className="text-2xl font-bold mb-4" style={{ color: 'hsl(217, 85%, 31%)' }}>Lesson Content</h2>
             <div 
-              className="text-neutral-700 leading-relaxed prose max-w-none"
+              className="leading-relaxed prose max-w-none"
+              style={{ color: 'hsl(215, 20%, 35%)' }}
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(lesson?.content_html || '<p>This lesson covers important concepts in credit repair.</p>') }}
             />
           </div>
 
           {/* Quiz Section */}
           {quiz && !showQuiz && !quizResult && (
-            <div className="border-t border-neutral-200 pt-8">
-              <div className="bg-primary-50 rounded-lg p-6">
+            <div className="pt-8" style={{ borderTop: '1px solid hsl(210, 40%, 92%)' }}>
+              <div className="rounded-lg p-6" style={{ backgroundColor: 'hsl(210, 40%, 96%)' }}>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-xl font-bold text-neutral-900 mb-2">{quiz.title}</h3>
-                    <p className="text-neutral-700">Test your knowledge with a quick quiz</p>
-                    <p className="text-sm text-neutral-600 mt-1">Passing score: {quiz.passing_score}%</p>
+                    <h3 className="text-xl font-bold mb-2" style={{ color: 'hsl(217, 85%, 31%)' }}>{quiz.title}</h3>
+                    <p style={{ color: 'hsl(215, 20%, 45%)' }}>Test your knowledge with a quick quiz</p>
+                    <p className="text-sm mt-1" style={{ color: 'hsl(215, 20%, 55%)' }}>Passing score: {quiz.passing_score}%</p>
                   </div>
                   <button
                     onClick={() => {
                       setShowQuiz(true);
                       setQuizAnswers(new Array((quiz.questions_json || []).length).fill(-1));
                     }}
-                    className="px-6 py-3 bg-primary-700 text-white rounded-lg font-semibold hover:bg-primary-900 transition-all shadow-sm"
+                    className="px-6 py-3 rounded-lg font-semibold shadow-md transition-all"
+                    style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
                   >
                     Start Quiz
                   </button>
@@ -226,19 +231,23 @@ export default function LessonPlayerPage() {
 
           {/* Quiz Questions */}
           {quiz && showQuiz && !quizResult && (
-            <div className="border-t border-neutral-200 pt-8">
-              <h3 className="text-2xl font-bold text-neutral-900 mb-6">{quiz.title}</h3>
+            <div className="pt-8" style={{ borderTop: '1px solid hsl(210, 40%, 92%)' }}>
+              <h3 className="text-2xl font-bold mb-6" style={{ color: 'hsl(217, 85%, 31%)' }}>{quiz.title}</h3>
               <div className="space-y-6">
                 {(quiz.questions_json || []).map((question: any, qIndex: number) => (
-                  <div key={qIndex} className="bg-neutral-50 rounded-lg p-6">
-                    <p className="font-semibold text-neutral-900 mb-4">
+                  <div key={qIndex} className="rounded-lg p-6" style={{ backgroundColor: 'hsl(210, 40%, 98%)' }}>
+                    <p className="font-semibold mb-4" style={{ color: 'hsl(217, 85%, 31%)' }}>
                       {qIndex + 1}. {question.question}
                     </p>
                     <div className="space-y-2">
                       {question.options.map((option: string, oIndex: number) => (
                         <label
                           key={oIndex}
-                          className="flex items-center p-3 bg-white rounded-lg border-2 border-neutral-200 cursor-pointer hover:border-primary-500 transition-all"
+                          className="flex items-center p-3 rounded-lg cursor-pointer transition-all"
+                          style={{ 
+                            backgroundColor: '#ffffff',
+                            border: quizAnswers[qIndex] === oIndex ? '2px solid hsl(43, 47%, 60%)' : '2px solid hsl(210, 40%, 90%)'
+                          }}
                         >
                           <input
                             type="radio"
@@ -251,7 +260,7 @@ export default function LessonPlayerPage() {
                             }}
                             className="mr-3"
                           />
-                          <span className="text-neutral-700">{option}</span>
+                          <span style={{ color: 'hsl(215, 20%, 35%)' }}>{option}</span>
                         </label>
                       ))}
                     </div>
@@ -261,7 +270,8 @@ export default function LessonPlayerPage() {
               <button
                 onClick={handleQuizSubmit}
                 disabled={quizAnswers.some(a => a === -1)}
-                className="mt-6 px-6 py-3 bg-primary-700 text-white rounded-lg font-semibold hover:bg-primary-900 transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                className="mt-6 px-6 py-3 rounded-lg font-semibold shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
               >
                 Submit Quiz
               </button>
@@ -270,18 +280,21 @@ export default function LessonPlayerPage() {
 
           {/* Quiz Results */}
           {quizResult && (
-            <div className="border-t border-neutral-200 pt-8">
-              <div className={`rounded-lg p-6 ${quizResult.passed ? 'bg-success-50' : 'bg-red-50'}`}>
+            <div className="pt-8" style={{ borderTop: '1px solid hsl(210, 40%, 92%)' }}>
+              <div 
+                className="rounded-lg p-6"
+                style={{ backgroundColor: quizResult.passed ? 'hsla(43, 47%, 60%, 0.15)' : 'hsla(0, 65%, 45%, 0.1)' }}
+              >
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-bold text-neutral-900">
+                    <h3 className="text-2xl font-bold" style={{ color: 'hsl(217, 85%, 31%)' }}>
                       {quizResult.passed ? 'Congratulations!' : 'Try Again'}
                     </h3>
-                    <p className="text-neutral-700 mt-2">
+                    <p className="mt-2" style={{ color: 'hsl(215, 20%, 45%)' }}>
                       You scored {quizResult.score}% ({quizResult.correctCount}/{quizResult.totalQuestions} correct)
                     </p>
                     {quizResult.passed && quizResult.xpAwarded > 0 && (
-                      <p className="text-success-700 font-semibold mt-1 flex items-center">
+                      <p className="font-semibold mt-1 flex items-center" style={{ color: 'hsl(43, 47%, 45%)' }}>
                         <TrendingUp className="w-4 h-4 mr-1" />
                         +{quizResult.xpAwarded} XP Earned!
                       </p>
@@ -296,7 +309,8 @@ export default function LessonPlayerPage() {
                     setQuizResult(null);
                     setShowQuiz(false);
                   }}
-                  className="px-6 py-2 bg-primary-700 text-white rounded-lg font-semibold hover:bg-primary-900 transition-all"
+                  className="px-6 py-2 rounded-lg font-semibold transition-all"
+                  style={{ backgroundColor: 'hsl(217, 85%, 31%)', color: '#ffffff' }}
                 >
                   {quizResult.passed ? 'Review' : 'Retake Quiz'}
                 </button>
@@ -309,7 +323,8 @@ export default function LessonPlayerPage() {
         <div className="flex justify-between items-center">
           <button 
             onClick={() => navigate('/courses')}
-            className="flex items-center px-6 py-3 bg-white border-2 border-neutral-300 text-neutral-900 rounded-lg font-semibold hover:border-primary-500 transition-all"
+            className="flex items-center px-6 py-3 rounded-lg font-semibold transition-all"
+            style={{ backgroundColor: '#ffffff', border: '2px solid hsl(210, 40%, 85%)', color: 'hsl(217, 85%, 31%)' }}
           >
             <ChevronLeft className="w-5 h-5 mr-2" />
             Back to Catalog
@@ -319,7 +334,8 @@ export default function LessonPlayerPage() {
             <button 
               onClick={handleCompleteLesson}
               disabled={completing}
-              className="px-6 py-3 bg-success-700 text-white rounded-lg font-semibold hover:bg-success-800 transition-all shadow-sm flex items-center disabled:opacity-50"
+              className="px-6 py-3 rounded-lg font-semibold shadow-md transition-all flex items-center disabled:opacity-50"
+              style={{ backgroundColor: 'hsl(43, 47%, 60%)', color: 'hsl(217, 85%, 15%)' }}
             >
               <CheckCircle className="w-5 h-5 mr-2" />
               {completing ? 'Completing...' : 'Mark Complete'}
